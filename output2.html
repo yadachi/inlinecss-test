@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>WebSockets From Scratch - Pusher Blog</title>
+  <link rel="profile" href="//gmpg.org/xfn/11">
+  <link rel="pingback" href="https://blog.pusher.com/xmlrpc.php">
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" id="prism-css" href="https://blog.pusher.com/wp-content/uploads/prism/prism.css?ver=1410795417" type="text/css" media="all">
+<script src="https://blog.pusher.com/wp-content/uploads/prism/prism.js"></script>
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="This guide is aimed at people who are new to WebSocket, or just wish to know more about what’s under the hood.">
+<link rel="canonical" href="https://blog.pusher.com/websockets-from-scratch/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebSockets From Scratch - Pusher Blog">
+<meta property="og:description" content="This guide is aimed at people who are new to WebSocket, or just wish to know more about what’s under the hood.">
+<meta property="og:url" content="https://blog.pusher.com/websockets-from-scratch/">
+<meta property="og:site_name" content="Pusher Blog">
+<meta property="article:tag" content="connection,http,realtimet,tcp,tcp server,tcp/ip,the websocket protocol,tutorial,websocket,websocket connection,websocket protocol,websocket server,websockets,websockets protocol">
+<meta property="article:section" content="Tutorial">
+<meta property="article:published_time" content="2015-05-21T15:15:38+00:00">
+<meta property="article:modified_time" content="2015-05-27T14:36:47+00:00">
+<meta property="og:updated_time" content="2015-05-27T14:36:47+00:00">
+<meta property="og:image" content="http://blog.pusher.com/wp-content/uploads/2015/05/blog_header_20.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="This guide is aimed at people who are new to WebSocket, or just wish to know more about what’s under the hood.">
+<meta name="twitter:title" content="WebSockets From Scratch - Pusher Blog">
+<meta name="twitter:site" content="@pusher">
+<meta name="twitter:domain" content="Pusher Blog">
+<meta name="twitter:image:src" content="http://blog.pusher.com/wp-content/uploads/2015/05/blog_header_20.png">
+<meta name="twitter:creator" content="@pusher">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","url":"https:\/\/blog.pusher.com\/","name":"Pusher Blog"}</script>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Pusher Blog » Feed" href="http://feeds.feedburner.com/pusherb">
+<link rel="alternate" type="application/rss+xml" title="Pusher Blog » Comments Feed" href="https://blog.pusher.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Pusher Blog » WebSockets From Scratch Comments Feed" href="https://blog.pusher.com/websockets-from-scratch/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/blog.pusher.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.2"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		
+<link rel="stylesheet" id="mashsb-styles-css" href="https://blog.pusher.com/wp-content/plugins/mashsharer/templates/mashsb.min.css?ver=2.1.5" type="text/css" media="all">
+
+<link rel="stylesheet" id="publisher-style-css" href="https://blog.pusher.com/wp-content/themes/publisher/style.css?ver=4.2.2" type="text/css" media="all">
+<link rel="stylesheet" id="publisher-fontawesome-css-css" href="https://blog.pusher.com/wp-content/themes/publisher/inc/fonts/fontawesome/font-awesome.css?ver=4.0.3" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="https://blog.pusher.com/wp-content/plugins/jetpack/css/jetpack.css?ver=3.4.3" type="text/css" media="all">
+<script type="text/javascript" src="https://blog.pusher.com/wp-includes/js/jquery/jquery.js?ver=1.11.2"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mashsb = {"shares":"175","round_shares":"1","animate_shares":"0","share_url":"https:\/\/blog.pusher.com\/websockets-from-scratch\/","title":"WebSockets+From+Scratch","image":"https:\/\/blog.pusher.com\/wp-content\/uploads\/2015\/05\/blog_header_20.png","desc":"I have been at Pusher for almost 6 months and, mainly working on customer-facing developer work, parts of our deeper infrastructure have seemed a bit of a black box to me. Pusher, a message service \u2026","hashtag":"&via=pusher","subscribe":"content","subscribe_url":"","activestatus":"1","singular":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/plugins/mashsharer/assets/js/mashsb.min.js?ver=2.1.5"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mashnet = {"body":"","subject":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/plugins/mashshare-networks/assets/js/mashnet.min.js?ver=2.1.0"></script>
+<script type="text/javascript">
+	window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9";
+		window.analytics.load("civb3ud3rl");
+	window.analytics.page();
+	</script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.pusher.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.pusher.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://blog.pusher.com/?p=1364">
+<!-- All in one Favicon 4.3 --><link rel="icon" href="http://blog.pusher.com/wp-content/uploads/2013/03/favicon.png" type="image/png">
+<link rel="shortcut icon" href="http://blog.pusher.com/wp-content/uploads/2013/03/favicon.ico">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body class="single single-post postid-1364 single-format-standard">
+
+<div id="page">
+  <div class="navigation-wrap clearfix">
+    <div class="navigation-wrap-inside clearfix">
+      <div class="nav-left">
+        <a href="https://pusher.com"><img class="pusher-logo" src="https://blog.pusher.com/wp-content/uploads/2015/01/logo.png"></a>
+        <span class="small-menu-break"></span>
+        <nav role="navigation" class="site-navigation main-navigation">
+          <h1 class="assistive-text">
+<i class="fa fa-bars"></i> <span class="menu-toggle-text">X CLOSE</span>
+</h1>
+          <div class="assistive-text skip-link"><a href="#content">Skip to content</a></div>
+          <div class="menu-head-navigation-container"><ul id="menu-head-navigation" class="menu">
+<li id="menu-item-1110" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1110"><a href="http://blog.pusher.com">Blog Home</a></li>
+<li id="menu-item-291" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-291"><a href="http://pusher.com/docs/javascript_quick_start">Quick Start Guide</a></li>
+<li id="menu-item-712" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-712"><a href="http://pusher.com/about/">Who We Are</a></li>
+<li id="menu-item-225" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-225"><a href="http://pusher.com/about/contact">Contact Us</a></li>
+<li id="menu-item-859" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-859"><a href="http://pusher.com/signup">Create a Pusher Account</a></li>
+</ul></div>        </nav><!-- .site-navigation .main-navigation -->
+      </div>
+
+      <div class="nav-right">
+        <!-- Grab header icons template -->
+        
+      <div class="header-search">
+        <ul class="toggle-icons">
+                  </ul>
+
+        <div class="toggle-boxes">
+          
+          <div class="toggle-box toggle-box-search">
+            <form method="get" action="https://blog.pusher.com/" role="search">
+              <label for="header-search-submit" class="assistive-text">Search</label>
+              <div class="search-box">
+                <input type="text" class="field" name="s" value="" placeholder="Search"><i class="fa fa-search"></i>
+              </div>
+            </form>
+          </div>
+<!-- .toggle-box -->
+
+        </div>
+<!-- .toggle-boxes -->
+      </div>
+<!-- .header-search -->      </div>
+    </div>
+<!-- .navigation-wrap-inside -->
+  </div>
+<!-- .navigation-wrap -->
+
+  <header id="masthead" class="site-header" role="banner" style="background-image: url('https://blog.pusher.com/wp-content/uploads/2014/09/cropped-blog_header.png');">
+
+    <div class="header-wrap">
+      <div class="hgroup">
+                  <h1 class="site-title animated flipInY">
+<a href="https://blog.pusher.com/" title="Pusher Blog" rel="home">Pusher Blog</a>
+          </h1>
+          <h2 class="site-description animated fadeIn">News, tips and cool ways to make the web realtime</h2>
+              </div>
+    </div>
+<!-- .header-wrap -->
+  </header><!-- #masthead .site-header -->
+<div id="main" class="site-main clearfix">
+  <div id="primary">
+    <div id="content" class="site-content container clearfix" role="main">
+
+              
+        <!-- Get post format -->
+        
+<div class="block-standard post-1364 post type-post status-publish format-standard has-post-thumbnail hentry category-tutorial tag-connection tag-http tag-realtimet tag-tcp tag-tcp-server tag-tcpip tag-the-websocket-protocol tag-tutorial tag-websocket tag-websocket-connection tag-websocket-protocol tag-websocket-server tag-websockets tag-websockets-protocol">
+			      <a class="block-thumb" href="https://blog.pusher.com/websockets-from-scratch/" title="Permalink to WebSockets From Scratch" rel="bookmark"><div class="post-header-image" style="width:100%;max-height:450px;background-size:cover;background-position:center;min-height:300px;background-image: url(https://blog.pusher.com/wp-content/uploads/2015/05/blog_header_20-1024x600.png)"></div></a>
+			
+
+	
+<div class="block-titles-wrap">
+	<div class="block-titles">
+					<div class="block-date">
+				<a href="https://blog.pusher.com/author/jamie/" title="Posts by Jamie Patel" rel="author">Jamie Patel</a>			</div>
+		
+					<h1 class="block-entry-title"><a href="https://blog.pusher.com/websockets-from-scratch/" rel="bookmark">WebSockets From Scratch</a></h1>
+			</div>
+<!-- .block-titles -->
+
+	<div class="block-text">
+					<p>I have been at Pusher for almost 6 months and, mainly working on customer-facing developer work, parts of our deeper infrastructure have seemed a bit of a black box to me. Pusher, a message service that lets you send realtime data from server to client or from client to client, has the <a href="https://pusher.com/websockets">WebSocket protocol</a> at its core. I was aware of how the HTTP protocol worked, but not WebSocket – aside from the fact it lets you do some nifty realtime stuff.</p>
+<p>Therefore I decided to dig a little deeper and try to build a WebSocket server from scratch – and by ‘scratch’, I mean using only Ruby’s built-in libraries. This blog post is to partly share what I’ve learnt and partly act as a tutorial, given that I couldn’t find many that would lead me through the process step-by-step. That said, there were plenty of awesome resources for getting to grips on the matter, such as on <a href="https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_servers">Mozilla</a> and this post from <a href="http://lucumr.pocoo.org/2012/9/24/websockets-101/">Armin Ronacher</a>.</p>
+<p>This guide is aimed at people who are new to WebSocket, or just wish to know more about what’s under the hood. What I’ll cover, in around 100 lines of Ruby, is:</p>
+<ul>
+<li>The HTTP handshake that initiates a WebSocket connection.</li>
+<li>Listening to messages on the server.</li>
+<li>Sending messages from the server.</li>
+</ul>
+<p>A lot of very important features will be left out for the sake of brevity, such as ping/pong heartbeats, types of messages that aren’t UTF-8 text data, security, proxying, handling different WebSocket protocol versions, and message fragmentation. So let’s get to it.</p>
+<h2>An Overview to the WebSocket Procotol</h2>
+<p>WebSocket, like HTTP, is a layer upon the <a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP protocol</a>. A high-level difference between the two is that a classic HTTP response closes the TCP socket, whereas in the WebSocket protocol, the connection stays open. This allows bi-directional communication between the server and client, and is great for the realtime functionality you are used to: chat applications, data visualization, activity streams and so on.</p>
+<p>A WebSocket connection begins with a HTTP GET request from the client to the server, called the ‘handshake’. This request carries with it a <code>Connection: upgrade</code> and <code>Upgrade: websocket</code> header to tell the server that it wants to begin a WebSocket connection, and a <code>Sec-WebSocket-Version</code> header that indicates the kind of response it wants. In this guide we’ll only focus on version 13 of the protocol.</p>
+<p>The request headers also include a <code>Sec-WebSocket-Key</code> field. With this, the server creates a <code>Sec-WebSocket-Accept</code> header that forms part of its response. How it does this, I will explain later.</p>
+<p>Once this handshake is made, each party is free to exchange messages, which are wrapped in ‘frames’. Each frame consists of information about:</p>
+<ul>
+<li>Whether this frame is or isn’t part of a continuation. In this guide, we’ll only deal with frames that contain a complete message (not fragmented).</li>
+<li>The content-type. In this post, we’ll only deal with UTF8-encoded text.</li>
+<li>Whether the frame is encoded, or ‘masked’. Frames from the client always have to be masked; frames from the server do not have to be.</li>
+<li>The payload length.</li>
+<li>The masking ‘key’ with which to decode the message – if the frame is masked.</li>
+<li>The payload of the frame.</li>
+</ul>
+<h2>The Guide</h2>
+<h3>What We’ll Build</h3>
+<p>During this post we’ll build a simple echo server that takes messages from a client and sends them back with a thank you, simply as a basic implementation of a WebSocket server.</p>
+<pre><code class="language-ruby">server = WebsocketServer.new
+
+loop do
+  Thread.new(server.accept) do |connection|
+    puts "Connected"
+    while (message = connection.recv)
+      puts "Received #{message}"
+      connection.send("Received #{message}. Thanks!")
+    end
+  end
+end
+</code></pre>
+<p></p>
+<h3>Getting Started</h3>
+<p>Let’s start with two classes: our <code>WebSocketServer</code> and our <code>WebSocketConnection</code>. Create them in files called <code>websocket_server.rb</code> and <code>websocket_connection.rb</code> respectively.</p>
+<h4>The WebSocketServer</h4>
+<p>The <code>WebSocketServer</code> will be initialized with options, such as the path of the WebSocket endpoint, the port and the host – these will default to <code>'/'</code>, <code>4567</code> and <code>localhost</code> respectively.</p>
+<pre><code class="language-ruby">require 'socket'
+
+class WebSocketServer
+
+  def initialize(options={path: '/', port: 4567, host: 'localhost'})
+    @path, port, host = options[:path], options[:port], options[:host]
+    @tcp_server = TCPServer.new(host, port)
+  end
+  ...
+ end
+</code></pre>
+<p>Upon initializaton, a <code>TCPServer</code> object, will be created with our host and port options – though it will not run until we ‘<code>accept</code>‘ it. Remember to require the built-in <code>socket</code> library that lets you create TCP connections.</p>
+<p>On calling <code>#accept</code>, our <code>WebSocketServer</code> will be responding to any incoming WebSocket requests. It will be responsible for validating incoming HTTP requests, and sending back a handshake.  If a handshake can and has been made – that is, if send_handshake returns <code>true</code> – it will return a new <code>WebSocketConnection</code>, as shown in the example below.</p>
+<pre><code class="language-ruby">class WebSocketServer
+
+  ...
+
+  def accept
+    socket = @tcp_server.accept
+    send_handshake(socket) &amp;&amp; WebSocketConnection.new(socket)
+  end
+
+end
+</code></pre>
+<p></p>
+<h4>The WebSocketConnection</h4>
+<p>The <code>WebSocketConnection</code> will be our API for sending and receiving messages. We initialize it with the TCP socket made upon firing up the <code>TCPServer</code> in <code>WebSocketServer#accept</code>.</p>
+<pre><code class="language-ruby">class WebSocketConnection
+
+  attr_reader :socket
+
+  def initialize(socket)
+    @socket = socket
+  end
+end
+</code></pre>
+<p>The connection object will read and write to this socket as it listens for and sends messages.</p>
+<h3>The Handshake</h3>
+<p>Going back to our <code>WebSocketServer</code> class, a <code>WebSocketServer#send_handshake</code> method is where everything begins. Firstly, let’s get the <code>request_line</code> (e.g. <code>'GET / HTTP/1.1'</code>) and request <code>header</code> from the socket, using the <code>socket#gets</code> method. This will block if there is nothing yet available, and will also get a line at a time.</p>
+<pre><code class="language-ruby">private
+
+def send_handshake(socket)
+  request_line = socket.gets
+  header = get_header(socket)
+  ...
+end
+
+# this gets the header by recursively reading each line offered by the socket
+def get_header(socket, header = "")
+  (line = socket.gets) == "rn" ? header : get_header(socket, header + line)
+end
+</code></pre>
+<p>If we have not received a GET request at the specified path, or there is no <code>Sec-WebSocket-Key</code> in the header, let’s write a 400 error to the socket. We can use the <code>&lt;&lt;</code> operator, and then close the socket to end the request. By returning <code>false</code>, we make sure a <code>WebSocketConnection</code> is not created and returned to the application.</p>
+<pre><code class="language-ruby">def send_handshake(socket)
+  request_line = socket.gets
+  header = get_header(socket)
+  if (request_line =~ /GET #{@path} HTTP\/1.1/) &amp;&amp; (header =~ /Sec-WebSocket-Key: (.*)\r\n/)
+    ... # complete the handshake
+  end
+  send_400(socket)
+  false # reject the handshake
+end
+
+def send_400(socket)
+  socket &lt;&lt; "HTTP/1.1 400 Bad Request\r\n" +
+            "Content-Type: text/plain\r\n" +
+            "Connection: close\r\n" +
+            "\r\n" +
+            "Incorrect request"
+  socket.close
+end
+</code></pre>
+<p>If there is a value to <code>Sec-WebSocket-Key</code>, according to the regular expression above, we can take that value and create the <code>Sec-WebSocket-Accept</code> header in our response. It does so by taking the value of the <code>Sec-WebSocket-Key</code> and concatenating it with <code>"258EAFA5-E914-47DA-95CA-C5AB0DC85B11"</code>, a ‘magic string’, defined in the <a href="https://tools.ietf.org/html/rfc6455#page-60">protocol specification</a>. It takes this concatenation, creates a SHA1 digest of it, then encodes this digest in Base64. We can do this using the built-in <code>digest/sha1</code> and <code>base64</code> libraries.</p>
+<pre><code class="language-ruby">def send_handshake(socket)
+  request_line = socket.gets
+  header = get_header(socket)
+  if (request_line =~ /GET #{@path} HTTP\/1.1/) &amp;&amp; (header =~ /Sec-WebSocket-Key: (.*)\r\n/)
+    ws_accept = create__accept($1)
+    ...
+  end
+  send_400(socket)
+  false
+end
+
+WS_MAGIC_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
+
+require 'digest/sha1'
+require 'base64'
+
+def create_websocket_accept(key)
+  digest = Digest::SHA1.digest(key + WS_MAGIC_STRING)
+  Base64.encode64(digest)
+end
+</code></pre>
+<p>Now we can take this key, and write our expected response to the socket. This response includes the status code <code>"101 Switching Protocols"</code>, to indicate that the server and client will now be speaking via a WebSocket. This also includes the same <code>Upgrade</code> and <code>Connection</code> headers sent to us by the client, and also the appropriate <code>Sec-WebSocket-Accept</code> key and value.</p>
+<pre><code class="language-ruby">def send_handshake(socket)
+  request_line = socket.gets
+  header = get_header(socket)
+  if (request_line =~ /GET #{@path} HTTP\/1.1/) &amp;&amp; (header =~ /Sec-WebSocket-Key: (.*)\r\n/)
+    ws_accept = create__accept($1)
+    send_handshake_response(socket, ws_accept)
+    return true
+  end
+  send_400(socket)
+  false
+end
+
+def send_handshake_response(socket, ws_accept)
+  socket &lt;&lt; "HTTP/1.1 101 Switching Protocols\r\n"
+            "Upgrade: websocket\r\n"
+            "Connection: Upgrade\r\n"
+            "Sec-WebSocket-Accept: #{ws_accept}\r\n"
+end
+</code></pre>
+<p>Now that we’ve sent the handshake and returned <code>true</code>, a new <code>WebSocketConnection</code> will be returned to our application. So, test it out! Let’s create a <code>loop</code> that constantly listens for new requests. Using <code>Thread.new</code> and yielding the result of <code>server.accept</code> – which should be our new connection – we can handle concurrent requests.</p>
+<p>In your Ruby app, write this:</p>
+<pre><code class="language-ruby">server = WebSocketServer.new
+
+loop do
+  Thread.new(server.accept) do |connection|
+    puts "Connected"
+  end
+end
+</code></pre>
+<p>Run this app and while this code is running, open up your browser console (on a page <em>not</em> served via HTTPS) and create a WebSocket connection to your server:</p>
+<pre><code class="language-javascript">var socket = new WebSocket("ws://localhost:4567");
+</code></pre>
+<p>You should see that a <code>connection</code> has been made upon handshake, and printed <code>"Connected"</code> to your terminal window. If not, you can check out the source code <a href="https://github.com/pusher/websockets-from-scratch-tutorial">here</a>.</p>
+<h3>Listening For Messages</h3>
+<p>Now that clients can connect to us and the user has access to the <code>WebSocketConnection</code> object, we can start listening to messages from the client.</p>
+<p>By the end of this section, here is what we want to have:</p>
+<pre><code class="language-ruby">loop do
+  Thread.new(server.accept) do |connection|
+    puts "Connected"
+    while (message = connection.recv)
+      puts message
+    end
+  end
+end
+</code></pre>
+<p>And if from our browser console, we type –</p>
+<pre><code class="language-javascript">var socket = new WebSocket("ws://localhost:4567");
+socket.send("hello");
+</code></pre>
+<p>- we should hope to see <code>"hello"</code> in our terminal window. Of course if you try this out now you’ll get an error.</p>
+<p>So let’s create <code>WebSocketConnection#recv</code> method. In it we will read from the socket if there are bytes available.</p>
+<pre><code class="language-ruby">class WebSocketConnection
+
+  ...
+
+  def recv
+  end
+
+end
+</code></pre>
+<p>As mentioned in the overview above, WebSocket messages are wrapped in frames, which are a sequence of bytes carrying information about the message. Our <code>#recv</code> method will parse the bytes of a frame and yield the message’s content to the application thread.</p>
+<p>Let’s have a look at what we’ll receive if, as in the example above, we send <code>"hello"</code> over the socket.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Byte value</th>
+<th align="center">129</th>
+<th align="center">133</th>
+<th>32</th>
+<th>25</th>
+<th>208</th>
+<th>9</th>
+<th>72</th>
+<th>124</th>
+<th>188</th>
+<th>101</th>
+<th>79</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Binary representation</strong></td>
+<td align="center">10000001</td>
+<td align="center">10000101</td>
+<td>00100000</td>
+<td>00011001</td>
+<td>11010000</td>
+<td>00001001</td>
+<td>01001000</td>
+<td>01111100</td>
+<td>10111100</td>
+<td>01100101</td>
+<td>01001111</td>
+</tr>
+<tr>
+<td align="center"><strong>Meaning</strong></td>
+<td align="center">Fin + opcode</td>
+<td align="center">Mask indicator + Length indicator</td>
+<td>Key</td>
+<td>Key</td>
+<td>Key</td>
+<td>Key</td>
+<td>Content</td>
+<td>Content</td>
+<td>Content</td>
+<td>Content</td>
+<td>Content</td>
+</tr>
+</tbody>
+</table>
+<p>The first byte indicates whether this is the complete message. If the first bit is <code>1</code> (as it is) then yes, otherwise it is <code>0</code>. The next 3 bytes are reserved. And the remainder of the byte (<code>0001</code>) indicates that the content type is text.</p>
+<p>Using the <code>TCPSocket#read</code> method, we can read <code>n</code> bytes at a time:</p>
+<pre><code class="language-ruby">def recv
+    fin_and_opcode = socket.read(1).bytes[0] # get the 0th item of [129]
+    ...
+end
+</code></pre>
+<p>The second byte contains two pieces of information. Firstly, if the message is encoded with a ‘mask’. If it’s from a client, it always will be. It cannot be if it’s from a server. If it is masked, the first bit will be <code>1</code>.</p>
+<p>The remainder of the byte indicates the content’s length. Firstly, we need to remove the first bit out of the equation by subtracting 128 (or calling <code>mask_and_length_indicator &amp; 0x7f</code>, if you are comfortable with bitwise operators – which I’m not).</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes[0]
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+  ...
+end
+</code></pre>
+<p>If the result is smaller or equal to 125, that is the content length.</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+
+  length =  if length_indicator &lt;= 125
+              length_indicator
+              ...
+            end
+end
+</code></pre>
+<p>If the <code>length_indicator</code> is equal to 126, the next two bytes need to be parsed into a 16-bit unsigned integer to get the numeric value of the length. We do this by using Ruby’s <code>Array#unpack</code> method, passing in <code>"n"</code> to show we want a 16-bit unsigned integer, <a href="http://ruby-doc.org/core-2.2.0/Array.html#pack-method">as per Ruby’s documentation here</a>.</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+
+  length =  if length_indicator &lt;= 125
+              length_indicator
+            elsif length_indicator == 126
+              socket.read(2).unpack("n")[0]
+            ...
+            end
+end
+</code></pre>
+<p>If the <code>length_indicator</code> is equal to 127, the next eight bytes will need to be parsed into a 64-bit unsigned integer to get the length. <code>"Q&gt;"</code> is passed to <code>unpack</code> to indicate this.</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+
+  length =  if length_indicator &lt;= 125
+              length_indicator
+            elsif length_indicator == 126
+              socket.read(2).unpack("n")[0]
+            else
+              socket.read(8).unpack("Q&gt;")[0]
+            end
+  ...
+end
+</code></pre>
+<p>The mask-key itself – what we use to decode the content – will be the next 4 bytes. Then, the encoded content will be the next <code>nth</code> bytes, where <code>n</code> is the content-length we extracted.</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+
+  length =  if length_indicator &lt;= 125
+              length_indicator
+            elsif length_indicator == 126
+              socket.read(2).unpack("n")[0]
+            else
+              socket.read(8).unpack("Q&gt;")[0]
+            end
+
+  keys = socket.read(4).bytes
+  encoded = socket.read(length).bytes
+  ...
+end
+</code></pre>
+<p>Let’s again use the mask-key to decode the content by using this magic function that loops through the bytes and <a href="http://en.wikipedia.org/wiki/Bitwise_operation#XOR">XORs</a> the octet with the <code>(i % 4)</code>th octet of the mask. This is defined in the specification <a href="https://tools.ietf.org/html/rfc6455#page-33">here</a>.</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+
+  length =  if length_indicator &lt;= 125
+              length_indicator
+            elsif length_indicator == 126
+              socket.read(2).unpack("n")[0]
+            else
+              socket.read(8).unpack("Q&gt;")[0]
+            end
+
+  keys = socket.read(4).bytes
+  encoded = socket.read(length).bytes
+
+  decoded = encoded.each_with_index.map do |byte, index|
+    byte ^ keys[index % 4]
+  end
+  ...
+end
+</code></pre>
+<p>Now that we have the decoded content of the message, let’s turn it into a string and return it:</p>
+<pre><code class="language-ruby">def recv
+  fin_and_opcode = socket.read(1).bytes
+  mask_and_length_indicator = socket.read(1).bytes[0]
+  length_indicator = mask_and_length_indicator - 128
+
+  length =  if length_indicator &lt;= 125
+              length_indicator
+            elsif length_indicator == 126
+              socket.read(2).unpack("n")[0]
+            else
+              socket.read(8).unpack("Q&gt;")[0]
+            end
+
+  keys = socket.read(4).bytes
+  encoded = socket.read(length).bytes
+
+  decoded = encoded.each_with_index.map do |byte, index|
+    byte ^ keys[index % 4]
+  end
+
+  decoded.pack("c*")
+end
+</code></pre>
+<p>Test it out on the example at the top of this section. If you’ve gotten stuck, you can refer to the code <a href="https://github.com/pusher/websockets-from-scratch-tutorial">here</a>.</p>
+<h3>Sending Messages</h3>
+<p>To complete our echo server and show the bidirectional power of WebSockets, let’s implement a message sending method to our <code>WebSocketConnection</code> object. This should be a little more straightforward, as messages from a server do not have to be masked.</p>
+<pre><code class="language-ruby">def send(message)
+  ...
+end
+</code></pre>
+<p>We’ll create the initial state of our byte array to send over the socket. This is straightforward as we’re sending a complete message and our content is text, so the first value in the array will be <code>129</code>, i.e. <code>10000001</code>. The first bit <code>1</code>, representing that this is a full message, and the last four bits, <code>0001</code>, showing that the payload is UTF-8 text.</p>
+<p>Then we’ll get the size of the message and set the length indicator accordingly. Because our frame is not masked, we do not need to add or subtract by 128 (in other words, set the first bit as <code>1</code>), which the client had done to their messages sent to us.</p>
+<p>If the size is smaller or equal to 125, we concatenate this to the byte array.</p>
+<pre><code class="language-ruby">def send(message)
+  bytes = [129]
+  size = message.bytesize
+
+  bytes +=  if size &lt;= 125
+              [size]
+              ...
+            end
+end
+</code></pre>
+<p>If the size is greater than 125 but smaller than 2<sup>16</sup>, which is the maximum size of two bytes, then we append 126 and the byte array of the length converted from an unsigned 16-bit integer.</p>
+<pre><code class="language-ruby">def send(message)
+  bytes = [129]
+  size = message.bytesize
+
+  bytes +=  if size &lt;= 125
+              [size]
+            elsif size &lt; 2**16
+              [126] + [size].pack("n").bytes
+            ...
+            end
+end
+</code></pre>
+<p>If the size is greater than 2<sup>16</sup>, we append 127 to the frame and then the byte array of the length converted from an unsigned 64-bit integer.</p>
+<pre><code class="language-ruby">def send(message)
+  bytes = [129]
+  size = message.bytesize
+
+  bytes +=  if size &lt;= 125
+              [size]
+            elsif size &lt; 2**16
+              [126] + [size].pack("n").bytes
+            else
+              [127] + [size].pack("Q&gt;").bytes
+            end
+  ...
+end
+</code></pre>
+<p>Now we can simply append our <code>message</code> as bytes. Then we turn this byte array into chars (using <code>Array#pack</code> with the argument <code>"C*"</code>). Now we can write this to the socket!</p>
+<pre><code class="language-ruby">def send(message)
+  bytes = [129]
+  size = message.bytesize
+
+  bytes +=  if size &lt;= 125
+              [size]
+            elsif size &lt; 2**16
+              [126] + [size].pack("n").bytes
+            else
+              [127] + [size].pack("Q&gt;").bytes
+            end
+
+  bytes += message.bytes
+  data = bytes.pack("C*")
+  socket &lt;&lt; data
+end
+</code></pre>
+<p></p>
+<h3>The Echo Server</h3>
+<p>Now that we can begin connections, send messages and receive messages, we can write our tiny echo-server application.</p>
+<pre><code class="language-ruby">server = WebsocketServer.new
+
+loop do
+  Thread.new(server.accept) do |connection|
+    puts "Connected"
+    while (message = connection.recv)
+      puts "Received #{message} from the browser"
+      connection.send("Received #{message}. Thanks!")
+    end
+  end
+end
+</code></pre>
+<p>Run this server, and then go into your browser console. Then type:</p>
+<pre><code class="language-javascript">var socket = new WebSocket("ws://localhost:4567");
+
+socket.onmessage = function(event){console.log(event.data);};
+</code></pre>
+<p>This will set up your WebSocket connection by sending a handshake to your server. Then, if a message is received, it will log it to the console.</p>
+<p>Let’s send a message and see what we get back:</p>
+<pre><code class="language-javascript">socket.send("hello world!");
+</code></pre>
+<p>Immediately after sending the message, your browser should have logged out an event whose data is <code>"Received hello world. Thanks!"</code>. Meanwhile, your terminal running the server should have logged out <code>"Received hello world from the browser"</code>.</p>
+<p>That’s it! I hope you enjoyed this post and that it was informative for those who were new to WebSocket.</p>
+<h2>What’s Missing?</h2>
+<p>As I mentioned earlier, there’s a lot more one can improve and add to make it a fully-functional WebSocket server – not to mention making it able to handle thousands of concurrent connections. From experience, we’ve found that developers who implement their own scalable WebSocket solutions have found it tricky to maintain and debug. In addition, developers have to be mindful that WebSocket connections, unlike HTTP, are stateful; managing that state within a properly distributed and load-balanced system is a non-trivial problem.</p>
+<p>Thus Pusher’s appeal to those for whom realtime is core to their application; we essentially host, maintain and scale these servers for you, and provide an easy-to-use API to interact with them so you can focus on the rest of your application. Hopefully this post has showed you a bit about what goes on underneath.</p>
+<h3>Further Reading</h3>
+<ul>
+<li><a href="http://blog.teamtreehouse.com/an-introduction-to-websockets">An Introduction to WebSockets</a></li>
+<li><a href="http://code.tutsplus.com/courses/websocket-powered-rails-applications">WebSocket-Powered Rails Applications</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_servers">Writing WebSocket servers</a></li>
+<li><a href="http://lucumr.pocoo.org/2012/9/24/websockets-101/">Websockets 101</a></li>
+</ul>
+									</div>
+<!-- .block-text -->
+</div>
+<!-- .block-titles-wrap -->
+</div>
+
+
+
+		<div class="social-bar-inner single-post">
+		<p class="share-this">Share this post</p>
+
+<div class="facebook-share share-this">
+<a style="width: 50px;">
+    <div class="box-left"></div>
+    <div class="box-middle">
+    	<i class="fa fa-facebook"></i>
+    </div>
+    <div class="box-right"></div>
+</a>
+<div class="bubble"><p style="height:100%"></p></div>
+</div>
+
+<div class="twitter-share share-this">
+<a style="width: 50px;">
+    <div class="box-left"></div>
+    <div class="box-middle">
+    	<i class="fa fa-twitter"></i>
+    </div>
+    <div class="box-right"></div>
+</a>
+<div class="bubble"><p style="height:100%"></p></div>
+</div>
+
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+<div class="buffer-share share-this">
+<a style="width: 50px;">
+    <div class="box-left"></div>
+    <div class="box-middle">
+    	<i class="ionicons ion-social-buffer"></i>
+    </div>
+    <div class="box-right"></div>
+</a>
+<div class="bubble"><p style="height:100%"></p></div>
+</div>
+</div>
+
+<div class="full-width-pane signup-pane front-page-signup-pane">
+
+  <div class="cta-inner">
+
+      <div class="header">
+     Getting started with Pusher is <span class="red-accent lightweight"><i>FREE</i></span>
+   </div>
+     <p class="subheading">
+       Join more than 75,000 happy developers.
+     </p>
+     <a href="http://pusher.com/signup"><button class="btn btn-primary btn-lg">Create a Free Account</button></a>
+
+   </div>
+
+ </div>
+
+
+        <div class="adjacent-post-links">
+          <div class="previous-post-link">
+            <div class="adjacent-post-text">
+              PREVIOUS <span class="dark-accent">POST</span>
+            </div>
+            <div class="link-arrow-container">
+              <a href="https://blog.pusher.com/update-on-security/" rel="prev"><div class="left-arrow arrow">←</div> <div class="previous-post-text">Update on security</div></a>            </div>
+          </div>
+		<div class="vertical-divide" style="
+    height: 50px;
+    width: 1px;
+    background-color: rgba(225,225,225,0.6);
+    position: absolute;
+    left: 49%;
+margin-top:20px;
+"></div>
+          <div class="next-post-link">
+            <div class="adjacent-post-text">
+              NEXT <span class="dark-accent">POST</span>
+            </div>
+            <div class="link-arrow-container">
+              <a href="https://blog.pusher.com/what-the-hack/" rel="next"><div class="right-arrow arrow">→</div> <div class="next-post-text">What the Hack?</div></a>            </div>
+          </div>
+        </div>
+
+
+
+        <div class="content-section">
+
+
+          <div id="content-wrap">
+
+
+            <div class="single-tab">
+
+<div style="display:none">
+ 
+                    <aside class="mashsb-container">
+                    <div class="mashsb-box">
+<div class="mashsb-count" style="color:#cccccc;display:none">
+<div class="counts" id="mashsbcount">175</div>
+<span class="mashsb-sharetext">SHARES</span>
+</div>
+<div class="mashsb-buttons">
+<a style="background:transparent;background-image:url(http://blog.pusher.com/wp-content/uploads/2014/09/twitter.png);background-size:cover;margin-left:10px;min-width:0;padding:0;width:20px;height:20px;margin-left:0;" class="mashicon-twitter" href="https://twitter.com/intent/tweet?text=WebSockets+From+Scratch%20via%20pusher&amp;url=https://blog.pusher.com/websockets-from-scratch/" target="_blank"><span class="icon"></span></a><a style="background:transparent;background-image:url(http://blog.pusher.com/wp-content/uploads/2014/09/facebook.png);background-size:cover;margin-left:10px;min-width:0;padding:0;width:20px;height:20px;" class="mashicon-facebook" href="http://www.facebook.com/sharer.php?s=100&amp;u=https://blog.pusher.com/websockets-from-scratch/&amp;p%5Btitle%5D=WebSockets+From+Scratch&amp;p%5Bsummary%5D=I+have+been+at+Pusher+for+almost+6+months+and%2C+mainly+working+on+customer-facing+developer+work%2C+parts+of+our+deeper+infrastructure+have+seemed+a+bit+of+a+black+box+to+me.+Pusher%2C+a+message+service+%E2%80%A6&amp;p%5Bimages%5D%5B0%5D=https://blog.pusher.com/wp-content/uploads/2015/05/blog_header_20.png" target="_blank"><span class="icon"></span></a><a style="background:transparent;background-image:url(http://blog.pusher.com/wp-content/uploads/2014/09/buffer.png);background-size:cover;margin-left:10px;min-width:0;padding:0;width:20px;height:20px;" class="mashicon-buffer" href="https://bufferapp.com/add?url=https%3A%2F%2Fblog.pusher.com%2Fwebsockets-from-scratch%2F&amp;text=WebSockets+From+Scratch" target="_blank"><span class="icon"></span></a><div class="onoffswitch2" style="display:none;">
+<input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" checked><label class="onoffswitch2-label" for="myonoffswitch2"><div class="onoffswitch2-inner"></div></label>
+</div>
+</div>
+</div>
+                    <div style="clear:both;"></div>
+<div class="mashsb-toggle-container" id="mashsb-toggle"></div></aside>
+                        <!-- Share buttons made by mashshare.net - Version: 2.1.5-->
+</div>
+
+
+
+<script>
+
+$(document).ready(function(){
+
+// cookies
+
+var viewCount, subscribedToNewsletter;
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+if (getCookie('blog_views') === "") {
+	setCookie('blog_views', 1, 30)
+} else {
+	viewCount = getCookie('blog_views');
+	viewCount = parseInt(viewCount);
+	viewCount += 1;
+	setCookie('blog_views', viewCount, 30);
+}
+
+if (getCookie('subscribed_to_newsletter') === "true") subscribedToNewsletter = true;
+
+// social button hovers
+
+$('div.share-this a').hover(function(){
+  $(this).addClass('social-hovered');
+}, function(){
+  $(this).removeClass('social-hovered');
+});
+
+// get share counts
+
+var urls = [
+{
+name: 'facebook', 
+href:'https://graph.facebook.com/?id='
+},
+{
+name: 'twitter',
+href: 'https://cdn.api.twitter.com/1/urls/count.json?url='
+},
+{
+name: 'buffer',
+href: 'https://api.bufferapp.com/1/links/shares.json?url='
+}
+]
+
+var getShareCount = function(service, url){
+  url += window.location.href;
+  var selector = 'div.' + service + '-share div.bubble p'
+  $.ajax({
+    url: url, 
+    method: 'GET', 
+    dataType:'jsonp'
+  }).success(function(data){
+    var shareCount = data.shares || data.count || 0;
+    var element = $(selector);
+    element.text(shareCount); 
+  })
+}
+
+
+getShareCount('facebook', 'https://graph.facebook.com/?id=');
+getShareCount('twitter', 'https://cdn.api.twitter.com/1/urls/count.json?url=');
+getShareCount('buffer', 'https://api.bufferapp.com/1/links/shares.json?url=');
+
+
+//attach share urls to buttons
+
+var twitterShareUrl = $('a.mashicon-twitter').attr('href');
+var facebookShareUrl = $('a.mashicon-facebook').attr('href');
+var bufferShareUrl = $('a.mashicon-buffer').attr('href');
+
+$('div.facebook-share a').attr('href', facebookShareUrl);
+$('div.twitter-share a').attr('href', twitterShareUrl);
+$('div.buffer-share a').attr('href', bufferShareUrl);
+
+//the newsletter widget
+
+var newsletterWidget = $('.newsletter');
+
+newsletterWidget.hide();
+
+// -- hide newsletter widget if viewcount is greater or equal to 4
+
+newsletterVisible = (!subscribedToNewsletter) ? true : false 
+
+var disableNewsletterWidget = function(){
+	newsletterVisible = false;
+	newsletterWidget.hide();
+};
+
+$('div.exit-newsletter').on('click', disableNewsletterWidget);
+
+$(window).on('scroll', function(){
+	
+	if (!newsletterVisible) return;	
+
+	var post = $('div.post');
+	var threeQuartersOfPost = (0.75 * post.height()) + post.offset().top;
+
+	var scrollHeight = $(window).scrollTop();
+
+	var topOfCTA = $('.signup-pane').offset().top; 
+
+	var beyondThreeQuarters = scrollHeight > threeQuartersOfPost;
+	
+	var beyondCTA = scrollHeight > topOfCTA     
+	
+	if (beyondThreeQuarters) {
+		newsletterWidget.show("slide", {direction: "right"}, 500);
+	} else {
+		newsletterWidget.hide("slide", {direction: "right"}, 500);
+	} 
+	
+
+});
+
+
+
+var subscribeToNewsletter = function(){
+	var email = $('.newsletter-form-input').val();
+	$.post('https://pusher.com/mailchimp?email=' + email).success(function(data){
+		if (data.success) {
+		console.log("Done!");
+		$('.newsletter-form-input').hide();
+		$('.newsletter-button').hide();
+		$('.newsletter-inputs').append("<p style='line-height:22px'>Thank you! A confirmation email has been sent to <b>" + email + "</b>.</p>");
+		 // $('.newsletter').fadeOut(5000, disableNewsletterWidget);
+		setTimeout(function(){
+		newsletterWidget.hide("slide", {direction: "right"}, 1000, disableNewsletterWidget);
+
+		}, 1000);
+
+		setCookie('subscribed_to_newsletter', 'true', 90);
+
+		} else { 
+		console.log("Error");
+		$('.newsletter-form-input').css('border-color', 'rgba(255,0,0,0.3)');
+}
+	});
+};
+
+$('.newsletter-button').on('click', subscribeToNewsletter);
+$('.newsletter-form-input').on('keydown', function(event){
+	if (event.keyCode === 13) subscribeToNewsletter();
+});
+
+
+
+})
+
+</script>
+
+
+              <div id="single-tabs">
+	
+
+
+                <ul class="single-tab-nav">
+                                    <li class="post-content-tab"><a href="#tab-1"><i class="fa fa-comment"></i> <span>Comments</span></a></li>
+                                    <li class="post-content-tab"><a href="#tab-2"><i class="fa fa-user"></i> <span>Author</span></a></li>
+                </ul>
+
+                <!-- If comments are open or we have at least one comment, load up the comment template. -->
+                                <div id="tab-1" class="comments-section post-tab clearfix">
+                  
+<div id="disqus_thread">
+    </div>
+
+                </div>
+<!-- comment section -->
+                
+                <div id="tab-2" class="author-section post-tab clearfix">
+                  <div id="author-info">
+                    <!-- If author has a bio, show it. -->
+                                                <div class="author-profile">
+                              <div id="author-avatar">
+                                <img alt="" src="https://1.gravatar.com/avatar/487ebb1adcfa3937696f021e98f54994?s=100&amp;d=mm&amp;r=g" srcset="https://1.gravatar.com/avatar/487ebb1adcfa3937696f021e98f54994?s=200&amp;d=mm&amp;r=g 2x" class="avatar avatar-100 photo" height="100" width="100">                              </div>
+
+                              <div id="author-description">
+                                <h2>About Jamie Patel</h2>
+                                Jamie is one of Pusher's Growth Engineers, and loves playing with new technology and working some realtime magic on them. Originally a literature graduate and founder of two magazines, he enjoys exploring the creative side of coding and is continually looking to learn new things.                              </div>
+                              <div class="clear"></div>
+                            </div>
+                            
+                            <div class="author-posts">
+                              <h3>Latest Posts By Jamie Patel</h3>
+                              <ul>
+<li>
+<span>06.02.15</span><a href="https://blog.pusher.com/smart-notifications-with-pusher-and-sendgrid/">Enabling Smart Notifications with Pusher and SendGrid</a>
+</li>
+<li>
+<span>05.12.15</span><a href="https://blog.pusher.com/announcing-version-1-0-0-of-the-python-library/">Announcing v1 of the Python Library</a>
+</li>
+<li>
+<span>04.28.15</span><a href="https://blog.pusher.com/pusher-golang-library/">Announcing The Official Golang Pusher Library</a>
+</li>
+<li>
+<span>04.25.15</span><a href="https://blog.pusher.com/pusher-at-football-hackday/">Pusher At Football Hackday</a>
+</li>
+<li>
+<span>03.03.15</span><a href="https://blog.pusher.com/pusher-simpleweb-hacknight/">Pusher at SimpleWeb Hacknight</a>
+</li>
+</ul>                            </div>
+<!-- author-posts -->
+                          </div>
+<!-- author-info -->
+                        </div>
+<!-- author-section -->
+                      </div>
+<!-- #single-tabs -->
+                    </div>
+<!-- .single-tab -->
+                  </div>
+<!-- #content-wrap -->
+                </div>
+<!-- .content-section -->
+              
+            </div>
+<!-- #content .site-content -->
+          </div>
+<!-- #primary .content-area -->
+
+        <!-- newsletter cta -->
+
+
+
+   <div class="newsletter">
+	<div class="exit-newsletter"><i class="fa fa-times"></i></div>
+	<div class="newsletter-top">
+		<div class="newsletter-text">
+			<div class="envelope-icon">
+				<img src="https://s3-eu-west-1.amazonaws.com/uploads-eu.hipchat.com/71080/736213/6xcJUeJxbWkhHxv/blog_email_icon.png" alt="Envelope Icon">
+ 			</div>
+			<div class="newsletter-seduction">
+				<p class="newsletter-question">Like what you see?</p>
+				<p class="newsletter-call">Sign up to our newsletter for useful updates</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="newsletter-bottom">
+		<div class="newsletter-inputs">
+			<input type="text" placeholder="Email address" class="newsletter-form-input">
+			<a><button class="newsletter-button">Sign up</button></a>
+		</div>
+	</div>
+
+</div>
+
+        </div>
+<!-- #main .site-main -->
+
+
+        
+	</div>
+<!-- #main .site-main -->
+
+	<footer id="colophon" class="site-footer clearfix">
+		<!-- Blocks Post Navigation -->
+		
+		<!-- Footer Text -->
+		<div class="copyright">
+			<div class="site-info">
+								© 2015 <a href="https://blog.pusher.com">Pusher Blog</a><span class="sep"> | </span>Enjoy our helpful resources &amp; Industry insights.			</div>
+<!-- .site-info -->
+		</div>
+	</footer><!-- #colophon .site-footer -->
+<!-- #page .hfeed .site -->
+
+ <script type="text/javascript">
+  analytics.track("Viewed Post", {"title":"WebSockets From Scratch","category":"Announcement, Case Studies, Editorial, Engineering, Events, Guest Posts, Industry Insights, Life at Pusher, Marketing, Tutorial, Use cases, User highlights","noninteraction":true}, {"library":"analytics-wordpress"});
+    
+</script>
+	<div style="display:none">
+	<div class="grofile-hash-map-487ebb1adcfa3937696f021e98f54994">
+	</div>
+	</div>
+<script type="text/javascript" src="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201523"></script>
+<script type="text/javascript" src="https://secure.gravatar.com/js/gprofiles.js?ver=2015Junaa"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.2.2"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-includes/js/masonry.min.js?ver=3.1.2"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var publisher_bg_js_vars = {"bg_image":""};
+var publisher_custom_js_vars = {"bg_image_url":"https:\/\/blog.pusher.com\/wp-content\/uploads\/2015\/05\/blog_header_20.png"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/themes/publisher/js/custom.js?ver=2.1.6"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/themes/publisher/js/jquery.fitvids.js?ver=1.0.3"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/themes/publisher/js/small-menu.js?ver=2.1.6"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/themes/publisher/js/html5shiv.js?ver=3.6.2"></script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-includes/js/comment-reply.min.js?ver=4.2.2"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.2.2","language":""},"disqusIdentifier":"1364 http:\/\/blog.pusher.com\/?p=1364","disqusShortname":"pusherblog","disqusTitle":"WebSockets From Scratch","disqusUrl":"https:\/\/blog.pusher.com\/websockets-from-scratch\/","options":{"manualSync":"1"},"postId":"1364"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/plugins/disqus-comment-system/media/js/disqus.js?ver=4.2.2"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"pusherblog"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://blog.pusher.com/wp-content/plugins/disqus-comment-system/media/js/count.js?ver=4.2.2"></script>
+<script type="text/javascript" src="https://stats.wp.com/e-201523.js" async defer></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.3',blog:'74195293',post:'1364',tz:'0'} ]);
+	_stq.push([ 'clickTrackerInit', '74195293', '1364' ]);
+</script>
+
+</body>
+</html>
