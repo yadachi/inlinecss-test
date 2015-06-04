@@ -1,14 +1,14 @@
 require 'premailer'
 
-premailer = Premailer.new('https://blog.pusher.com/websockets-from-scratch/?utm_source=webopsweekly&utm_medium=email', :warn_level => Premailer::Warnings::SAFE)
+premailer = Premailer.new('http://martinfowler.com/articles/refactoring-external-service.html', :warn_level => Premailer::Warnings::SAFE)
 
 # Write the HTML output
-File.open("output.html", "w") do |fout|
+File.open("output4.html", "w") do |fout|
   fout.puts premailer.to_inline_css
 end
 
 # Write the plain-text output
-File.open("output.txt", "w") do |fout|
+File.open("output4.txt", "w") do |fout|
   fout.puts premailer.to_plain_text
 end
 

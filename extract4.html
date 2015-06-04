@@ -1,0 +1,1381 @@
+<body style="background: transparent; border: 0; color: #303633; font-family: OpenSans, sans-serif; font-size: 16px; line-height: 1.2; margin: 0; outline: 0; padding: 0; vertical-align: baseline" bgcolor="transparent">
+<style type="text/css">
+body {
+margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;
+}
+img {
+margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;
+}
+body {
+line-height: 1;
+}
+blockquote:before {
+content: none;
+}
+blockquote:after {
+content: none;
+}
+q:before {
+content: none;
+}
+q:after {
+content: none;
+}
+:focus {
+outline: 0;
+}
+@font-face {
+font-family: 'Marydale'; src: url('http://martinfowler.com/fonts/marydale/marydale-webfont.eot?#iefix') format("embedded-opentype"), url('http://martinfowler.com/fonts/marydale/marydale-webfont.woff') format("woff"), url('http://martinfowler.com/fonts/marydale/marydale-webfont.ttf') format("truetype"), url('http://martinfowler.com/fonts/marydale/marydale-webfont.svg#marydaleregular') format("svg"); font-weight: normal; font-style: normal;
+}
+@font-face {
+font-family: 'FontAwesome'; src: url('https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.eot?#iefix') format("embedded-opentype"), url('https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.woff') format("woff"), url('https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.ttf') format("truetype"), url('https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.svgfontawesomeregular') format("svg"); font-weight: normal; font-style: normal;
+}
+div#banner a:visited {
+color: white; text-decoration: none;
+}
+div#banner a:hover {
+color: #BC85CC; text-decoration: underline;
+}
+div#banner a.tw:visited {
+color: #D5E14D;
+}
+div#footer a:visited {
+color: white; text-decoration: none;
+}
+div#footer a:hover {
+color: #BC85CC; text-decoration: underline;
+}
+div#footer a.tw:visited {
+color: #D5E14D;
+}
+.icon-twitter:before {
+content: ""; font-family: FontAwesome; font-weight: normal; font-style: normal; text-decoration: inherit; -webkit-font-smoothing: antialiased; *margin-right: .3em;
+}
+.icon-rss:before {
+content: ""; font-family: FontAwesome; font-weight: normal; font-style: normal; text-decoration: inherit; -webkit-font-smoothing: antialiased; *margin-right: .3em;
+}
+body {
+margin: 0;
+}
+body {
+font-size: 16px; font-family: OpenSans, sans-serif; line-height: 1.2; color: #303633;
+}
+body &gt; div#banner {
+margin-left: 30px;
+}
+body &gt; div#footer {
+margin-left: 30px;
+}
+h1 a:visited {
+color: #5b2858;
+}
+p.subtitle a:visited {
+color: #5b2858;
+}
+h2 a:visited {
+color: #5b2858;
+}
+div.frontMatter div.contents h3 a:visited {
+color: #5b2858;
+}
+h3 a:visited {
+color: #5b2858;
+}
+h4 a:visited {
+color: #5b2858;
+}
+h5 a:visited {
+color: #5b2858;
+}
+a:visited {
+color: #94388e; text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+}
+img {
+max-width: 100%;
+}
+body {
+font-size: 16px; font-family: OpenSans, sans-serif;
+}
+div.frontMatter div.author a:visited {
+color: #94388e;
+}
+div.frontMatter div.author a:hover {
+color: #94388e;
+}
+div.frontMatter div.contents a:visited {
+color: #5b2858;
+}
+div.frontMatter div.contents a:hover {
+color: #5b2858;
+}
+.paperBody .end-box .tags a:hover {
+background: #89b77f;
+}
+.end-box .tags a:hover {
+background: #89b77f;
+}
+.next-installment a:visited {
+color: #b5b935;
+}
+</style>
+<div id="banner" style="background: black; border: 0; color: white; font-family: OpenSans, sans-serif; font-size: 14px; height: 100px; margin: 0 0 0 30px; outline: 0; padding: 0; position: relative; vertical-align: baseline">
+  <img class="photo" src="http://martinfowler.com/img/tate.png" style="background: transparent; border: 0; font-size: 100%; margin: 0; max-width: 100%; outline: 0; padding: 0; position: absolute; vertical-align: baseline">
+   <a href="http://martinfowler.com" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+      <img class="name-logo" src="http://martinfowler.com/mf-name-white.png" style="background: transparent; border: 0; font-size: 100%; left: 10px; margin: 0; max-width: 100%; outline: 0; padding: 0; position: absolute; top: 0; vertical-align: baseline">
+  <!--[if lte IE 6]>
+  <img class = 'ie6-name-logo' src = '/mf-name-white-solid.png'/>
+  <![endif]-->
+    </a>
+    <div class="search" style="background: transparent url('http://martinfowler.com/search_bg.gif') no-repeat; border: 0; float: left; font-size: 100%; height: 23px; margin: 0; outline: 0; padding: 0; position: absolute; right: 20px; top: 20px; vertical-align: baseline; width: 173px">
+      <!-- SiteSearch Google -->
+      <form method="GET" action="http://www.google.com/search" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+        <input type="hidden" name="ie" value="UTF-8" style="border: 0; font-size: 12px; margin: 0; padding: 0">
+        <input type="hidden" name="oe" value="UTF-8" style="border: 0; font-size: 12px; margin: 0; padding: 0">
+        <input class="field" type="text" name="q" size="15" maxlength="255" value="" style="border: 0; font-size: 12px; margin: 3px 3px 3px 4px; padding: 0; width: 142px">
+        <input class="button" type="submit" name="btnG" value=" " title="Search" style="background: transparent; border: 0; font-size: 99%; margin: 0; padding: 0; width: 18px">
+        <input type="hidden" name="domains" value="martinfowler.com" style="border: 0; font-size: 12px; margin: 0; padding: 0">
+        <input type="hidden" name="sitesearch" value="" style="border: 0; font-size: 12px; margin: 0; padding: 0"> 
+        <input type="hidden" name="sitesearch" value="martinfowler.com" style="border: 0; font-size: 12px; margin: 0; padding: 0">
+      </form>
+    </div>
+  <div class="main-navigation" style="background: transparent; border: 0; bottom: 10px; font-size: 100%; left: 10px; margin: 0; outline: 0; padding: 0; position: absolute; vertical-align: baseline">
+    <ul style="background: transparent; border: 0; font-size: 100%; list-style: none outside none; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/intro.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Intro</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/videos.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Videos</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/design.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Design</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/agile.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Agile</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://refactoring.com" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Refactoring</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/nosql.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">NoSQL</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/dsl.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">DSL</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><a href="http://martinfowler.com/delivery.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Delivery</a></li>
+      <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline">
+        <p style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="http://martinfowler.com/aboutMe.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">About Me</a></p>
+    
+        </li>
+<li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><p style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+          <a href="http://www.thoughtworks.com" class="tw" style="background: transparent; border: 0; color: #D5E14D; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">ThoughtWorks</a>
+    </p></li>
+    
+        <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><p style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+      <a href="http://martinfowler.com/feed.atom" title="feed" class="icon-rss" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+      </a>
+     </p></li>
+    
+        <li style="background: transparent; border: 0; float: left; font-family: OpenSans, sans-serif; font-size: 14px; margin: 0; outline: 0; padding: 0 10px 0 0; vertical-align: baseline"><p style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+      <a href="http://www.twitter.com/martinfowler" title="Twitter stream" class="icon-twitter" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+      </a>
+     </p></li>
+      
+    </ul>
+  </div>
+</div>
+
+<div id="content" style="background: white; border: 0; font-size: 100%; margin: 2em auto 2em 30px; min-height: 500px; outline: 0; padding: 0; vertical-align: baseline; width: 40em">
+<h1 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 200%; font-weight: bold; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Refactoring code that accesses external services</h1>
+
+<p class="abstract" style="background: transparent; border: 0; font-size: 100%; font-style: italic; line-height: 1.4; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><i style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+    When I write code that deals with external services, I find it
+    valuable to separate that access code into separate objects. Here
+    I show how I would refactor some congealed code into a common
+    pattern of this separation.
+  </i></p>
+
+<div class="frontMatter" style="background: transparent; border-color: #5b2858; border-style: solid none; border-width: thin 0; clear: both; font-family: OpenSans, sans-serif; font-size: 90%; margin: 0; outline: 0; overflow: hidden; padding: 1em 0; vertical-align: baseline">
+<div class="frontLeft" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline; width: 40%">
+<p class="date" style="background: transparent; border: 0; font-size: 100%; margin: 0.3em; outline: 0; padding: 0; vertical-align: baseline">17 February 2015</p>
+
+<div class="author" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0 0 0.3em; outline: 0; padding: 0; vertical-align: baseline">
+<img alt="Photo of Martin Fowler" src="http://martinfowler.com/mf.jpg" width="80" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 0 1em 1em 0; max-width: 80px; outline: 0; padding: 0; vertical-align: baseline" align="left">
+<p class="name" style="background: transparent; border: 0; font-size: 100%; font-weight: bold; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a href="http://martinfowler.com/" rel="author" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Martin Fowler</a></p>
+</div>
+
+<div class="clear" style="background: transparent; border: 0; clear: both; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"></div>
+
+<div class="tags" style="background: transparent; border: 0; font-size: 100%; margin: 0.3em; outline: 0; padding: 0; vertical-align: baseline">Find <b style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">similar articles</b> to this by looking at these tags: <a href="http://martinfowler.com/tags/object%20collaboration%20design.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">object collaboration design</a> · <a href="http://martinfowler.com/tags/clean%20code.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">clean code</a> · <a href="http://martinfowler.com/tags/refactoring.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">refactoring</a> · <a href="http://martinfowler.com/tags/application%20architecture.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">application architecture</a>
+</div>
+</div>
+
+<div class="frontRight" style="background: transparent; border: 0; float: right; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline; width: 55%">
+<div class="contents" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 100%; font-weight: bold; margin: 0.5em 0; outline: 0; padding: 0; vertical-align: baseline">Contents</h2>
+
+<ul style="-webkit-padding-start: 0; background: transparent; border: 0; font-size: 100%; list-style: square; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<li style="background: transparent; border: 0; font-size: 100%; list-style: none; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="#TheStartingCode" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">The starting code</a></li>
+
+<li style="background: transparent; border: 0; font-size: 100%; list-style: none; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="#PuttingTheCodeUnderTest" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Putting the code under test</a></li>
+
+<li style="background: transparent; border: 0; font-size: 100%; list-style: none; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="#SeparatingTheRemoteCallIntoAConnectionObject" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Separating the remote call into a connection object</a></li>
+
+<li style="background: transparent; border: 0; font-size: 100%; list-style: none; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="#SeparatingTheYoutubeDataStructureIntoAGateway" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Separating the youtube data structure into a Gateway</a></li>
+
+<li style="background: transparent; border: 0; font-size: 100%; list-style: none; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="#SeparatingTheDomainLogicIntoADomainObject" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Separating the domain logic into a Domain Object</a></li>
+
+<li style="background: transparent; border: 0; font-size: 100%; list-style: none; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><a href="#musings" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Musings on the final objects</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="paperBody" style="background: transparent; border: 0; clear: both; font-size: 100%; line-height: 1.4; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">One of the characteristics of software systems is that they
+    don't live on their own. In order to do something useful, they
+    usually need to talk to other bits of software, written by
+    different people, people that we don't know and who neither know
+    or care about the software that we're writing.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">When we're writing software that does this kind of external
+    collaboration, I think it's particularly useful to apply good
+    modularity and encapsulation. There are common patterns which I
+    see and have found valuable in doing this. </p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">In this article I'll take a simple example, and walk through
+    the refactorings that introduce the kind of modularity I'm looking
+    for.</p>
+
+<div id="TheStartingCode" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<hr class="topSection" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thick; margin: 3em 50% 0px 0px">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 0 0 1em; outline: 0; padding: 0; vertical-align: baseline">The starting code</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">The example code's job is to read some data about videos from
+      a JSON file, enrich it with data from YouTube, calculate some simple
+      further data, and then return the data in JSON.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Here is the starting code.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+    client = GoogleAuthorizer.new(
+      token_key: 'api-youtube',
+      application_name: 'Gateway Youtube Example',
+      application_version: '0.1'
+      ).api_client
+    youtube = client.discovered_api('youtube', 'v3')
+    request = {
+      api_method: youtube.videos.list,
+      parameters: {
+        id: ids.join(","),
+        part: 'snippet, contentDetails, statistics',
+      }
+    }
+    response = JSON.parse(client.execute!(request).body)
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_record = response['items'].find{|v| id == v['id']}
+      video['views'] = youtube_record['statistics']['viewCount'].to_i
+      days_available = Date.today - Date.parse(youtube_record['snippet']['publishedAt'])
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+
+<p class="code-remark" style="background: transparent; border: 0; color: #9e785f; font-size: 80%; font-style: italic; margin: 1em 0 1em 3em; outline: 0; padding: 0; vertical-align: baseline">The language for this example is Ruby</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">The first thing for me to say here is that there isn't much
+      code in this example. If the entire codebase is just this
+      script, then you don't have to worry as much about
+      modularity. I need a small example, but any reader's eyes
+      would glaze over if we looked at a real system. So I have to ask
+      you to imagine this code as typical code in a system of tens of
+      thousands of lines.</p>
+
+<p class="skippable" style="background: transparent; border: 0; font-size: 80%; margin: 1em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline">The access to the YouTube API is mediated through a
+      GoogleAuthorizer object which, for this article's purposes, I'm
+      going to treat as an external API. It handles the messy
+      details of connecting to a Google service (such as YouTube) and
+      in particular handles authorization issues. If you want to
+      understand how it works, take a look at <a href="http://martinfowler.com/articles/command-line-google.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">an article I wrote
+      recently about accessing Google APIs</a>.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">What's up with this code? You may not understand everything
+      this code is doing, but you should be able to see that it mixes
+      different concerns, which I've suggested by coloring the code
+      example below. In order to make any
+      changes you have to comprehend
+       
+<span class="frag-api-access" style="background: transparent; border: 0; color: #1a73ba; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">how to access to YouTube's
+      API,</span>
+
+<span class="frag-youtube-data" style="background: transparent; border: 0; color: #11aa58; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">how YouTube
+      structures its data</span>
+, and 
+<span class="frag-domain" style="background: transparent; border: 0; color: #9e785f; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"> some domain logic.</span>
+</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+<span class="frag-api-access" style="background: transparent; border: 0; color: #1a73ba; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    client = GoogleAuthorizer.new(
+      token_key: 'api-youtube',
+      application_name: 'Gateway Youtube Example',
+      application_version: '0.1'
+      ).api_client
+    youtube = client.discovered_api('youtube', 'v3')
+    request = {
+      api_method: youtube.videos.list,
+      parameters: {
+        id: ids.join(","),
+        part: <span class="frag-youtube-data" style="background: transparent; border: 0; color: #11aa58; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">'snippet, contentDetails, statistics',</span>
+      }
+    }
+    response = JSON.parse(client.execute!(request).body)</span>
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+<span class="frag-youtube-data" style="background: transparent; border: 0; color: #11aa58; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      youtube_record = response['items'].find{|v| id == v['id']}</span>
+<span class="frag-youtube-data" style="background: transparent; border: 0; color: #11aa58; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      video['views'] = youtube_record['statistics']['viewCount'].to_i</span>
+      <span class="frag-domain" style="background: transparent; border: 0; color: #9e785f; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">days_available = Date.today - </span><span class="frag-youtube-data" style="background: transparent; border: 0; color: #11aa58; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">Date.parse(youtube_record['snippet']['publishedAt'])</span>
+<span class="frag-domain" style="background: transparent; border: 0; color: #9e785f; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      </span>
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">It's common for software mavens like me to talk about
+      "separation of concerns" - which basically means different
+      topics should be in separate modules. My primary reason for this
+      is comprehension: in a well-modularized program each
+      module should be about one topic, so I can remain ignorant of
+      anything I don't need to understand. Should YouTube's data
+      formats change, I shouldn't have to understand the domain logic
+      of the application to rearrange the access code. Even if I'm
+      making  a change that takes some new data from YouTube and uses
+      it in some domain logic, I should be able to split my task into
+      those parts and deal with each one separately, minimizing how
+      many lines of code I need to keep spinning in my head.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">My refactoring mission is to split these concerns out into
+      separate modules. When I'm done the only code in the Video
+      Service should be the uncolored code - the code that coordinates
+      these other responsibilities.</p>
+</div>
+
+<div id="PuttingTheCodeUnderTest" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<hr class="topSection" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thick; margin: 3em 50% 0px 0px">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 0 0 1em; outline: 0; padding: 0; vertical-align: baseline">Putting the code under test</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">The first step in refactoring is always the same. You need to
+      be confident that you aren't going to inadvertently break
+      anything. Refactoring is all about stringing together a large
+      set of small steps, all of which are behavior preserving. By
+      keeping the steps small, we increase the chances that we don't
+      screw up. But I know myself well enough to know I can screw up
+      even the simplest change, so to get the confidence I need I have
+      to have tests to catch my mistakes.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">But code like this isn't straightforward to test. It would be
+      nice to write a test that asserts on the calculated monthly views
+      field. After all if anything else goes wrong, this is going to
+      give an incorrect answer. But the trouble is that I'm accessing
+      live YouTube data, and people have a habit of watching videos.
+      The view count field from YouTube will change regularly, causing
+      my tests to go red <a href="http://martinfowler.com/articles/nonDeterminism.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">non-deterministically</a></p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">So my first task is to remove that piece of flakiness. I can
+      do that by introducing a <a href="http://martinfowler.com/bliki/TestDouble.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Test Double</a>, an object that looks like
+      YouTube but instead responds in a deterministic fashion.
+      Unfortunately here I run into The Legacy Code Dilemma. </p>
+
+<blockquote style="background: transparent; border-left-style: solid; border-width: 0 0 0 2px; color: #5b2858; font-size: 100%; font-style: italic; margin: 0; outline: 0; padding: 0 0 0 1em; quotes: none; vertical-align: baseline">
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">The Legacy Code Dilemma: When we change code, we should
+        have tests in place. To put tests in place, we often have to
+        change code.</p>
+
+<p class="quote-attribution" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a href="http://www.amazon.com/gp/product/0131177052?ie=UTF8&amp;tag=martinfowlerc-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131177052" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">-- Michael Feathers</a><img src="http://www.assoc-amazon.com/e/ir?t=martinfowlerc-20&amp;l=as2&amp;o=1&amp;a=0321601912" width="1" height="1" border="0" alt="" style="background: transparent; border: 0 none; font-size: 100%; height: 1px !important; margin: 0px; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline; width: 1px !important"></p>
+</blockquote>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Given that I have to make this change without tests, I need
+      to make the smallest and simplest changes I can think of that
+      will get the interaction with YouTube behind a seam where I can
+      introduce a test double. So my first step is to use <a href="http://refactoring.com/catalog/extractMethod.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Extract Method</a> to get the
+      interaction with YouTube separated from the rest of the routine
+      by into its own method.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    response = call_youtube ids</span>
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_record = response['items'].find{|v| id == v['id']}
+      video['views'] = youtube_record['statistics']['viewCount'].to_i
+      days_available = Date.today - Date.parse(youtube_record['snippet']['publishedAt'])
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+
+  def call_youtube ids
+    client = GoogleAuthorizer.new(
+      token_key: 'api-youtube',
+      application_name: 'Gateway Youtube Example',
+      application_version: '0.1'
+      ).api_client
+    youtube = client.discovered_api('youtube', 'v3')
+    request = {
+      api_method: youtube.videos.list,
+      parameters: {
+        id: ids.join(","),
+        part: 'snippet, contentDetails, statistics',
+      }
+    }
+    return JSON.parse(client.execute!(request).body)
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Doing this achieves two things. Firstly it nicely pulls out
+      the google API manipulation code into its own method (mostly)
+      isolating it from any other kind of code. This on its own is
+      worthwhile. Secondly, and more urgently, it sets up a seam which
+      I can use to substitute test behavior. Ruby's built in minitest
+      library allows me to easily stub individual methods on an object.</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">class VideoServiceTester &lt; Minitest::Test
+  def setup
+    vs = VideoService.new
+    vs.stub(:call_youtube, stub_call_youtube) do
+      @videos = JSON.parse(vs.video_list)
+      @µS  =  @videos.detect{|v| 'wgdBVIX9ifA' == v['youtubeID']}
+      @evo =  @videos.detect{|v| 'ZIsgHs0w44Y' == v['youtubeID']}
+    end
+  end
+  def stub_call_youtube
+    JSON.parse(File.read('test/data/youtube-video-list.json'))
+  end
+  def test_microservices_monthly_json
+    assert_in_delta 5880, @µS ['monthlyViews'], 1
+    assert_in_delta   20, @evo['monthlyViews'], 1
+  end
+  # further tests as needed…
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">By separating out the YouTube call, and stubbing it, I can
+      make this test behave deterministically. Well at least for
+      today, for it to work tomorrow I need to do the same thing with
+      the call to <code style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">Date.today</code>. </p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoServiceTester…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def setup
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    Date.stub(:today, Date.new(2015, 2, 2)) do</span>
+      vs = VideoService.new
+      vs.stub(:call_youtube, stub_call_youtube) do
+        @videos = JSON.parse(vs.video_list)
+        @µS  =  @videos.detect{|v| 'wgdBVIX9ifA' == v['youtubeID']}
+        @evo =  @videos.detect{|v| 'ZIsgHs0w44Y' == v['youtubeID']}
+      end
+    end
+  end
+</pre>
+</div>
+
+<div id="SeparatingTheRemoteCallIntoAConnectionObject" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<hr class="topSection" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thick; margin: 3em 50% 0px 0px">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 0 0 1em; outline: 0; padding: 0; vertical-align: baseline">Separating the remote call into a connection object</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Separating concerns by putting code into different functions
+      is a first level of separation. But when the concerns are as
+      different as domain logic and dealing with an external data
+      provider, I prefer to increase the level of separation into
+      different classes. </p>
+
+<div class="figure" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<p class="figureImage" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a name="no-sep.png" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline" id="no-sep.png"></a><img alt="Figure 1" src="http://martinfowler.com/articles/refactoring-external-service/no-sep.png" style="background: transparent; border: 0; font-size: 100%; margin: 0; max-width: none; outline: 0; padding: 0; vertical-align: baseline" width="400"></p>
+
+<p class="figureCaption" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline">Figure 1: 
+        At the beginning, the video service class contains four responsibilities
+      </p>
+</div>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">My first step is therefore to create a new
+      class and use <a href="http://refactoring.com/catalog/moveMethod.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Move Method</a>.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def call_youtube ids
+    YoutubeConnection.new.list_videos ids
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeConnection…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def list_videos ids
+    client = GoogleAuthorizer.new(
+      token_key: 'api-youtube',
+      application_name: 'Gateway Youtube Example',
+      application_version: '0.1'
+      ).api_client
+    youtube = client.discovered_api('youtube', 'v3')
+    request = {
+      api_method: youtube.videos.list,
+      parameters: {
+        id: ids.join(","),
+        part: 'snippet, contentDetails, statistics',
+      }
+    }
+    return JSON.parse(client.execute!(request).body)
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">With that I can also change the stub so it returns a test
+      double rather than simply stubbing the method.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoServiceTester…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def setup
+    Date.stub(:today, Date.new(2015, 2, 2)) do
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      YoutubeConnection.stub(:new, YoutubeConnectionStub.new) do</span>
+        @videos = JSON.parse(VideoService.new.video_list)
+        @µS  =  @videos.detect{|v| 'wgdBVIX9ifA' == v['youtubeID']}
+        @evo =  @videos.detect{|v| 'ZIsgHs0w44Y' == v['youtubeID']}
+      end
+    end
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeConnectionStub…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def list_videos ids
+    JSON.parse(File.read('test/data/youtube-video-list.json'))
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">When doing this refactoring, I have to be wary that my shiny
+      new tests
+      won't catch any mistakes I make behind the stub, so I have to
+      manually ensure that the production code still works. (And yes,
+      since you asked, I did make a mistake while doing this (leaving
+      off the argument to list-videos). There's a reason I need to
+      test so much.)</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">The greater separation of concerns you get with a separate
+      class also gives you a better seam for testing - I can wrap
+      everything that needs to be stubbed into a single object
+      creation, which is particularly handy if we need to make
+      multiple calls to the same service object during the test.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">With the call to YouTube moved to the connection object, the
+      method on the video service isn't worth having any more so I
+      subject it to
+      <a href="http://refactoring.com/catalog/inlineMethod.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Inline Method</a>.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    response = YoutubeConnection.new.list_videos ids</span>
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_record = response['items'].find{|v| id == v['id']}
+      video['views'] = youtube_record['statistics']['viewCount'].to_i
+      days_available = Date.today - Date.parse(youtube_record['snippet']['publishedAt'])
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+
+<span class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">  def call_youtube ids
+    YoutubeConnection.new.list_videos ids
+  end</span>
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I don't like that my stub has to parse the json string. On
+      the whole I like to keep connection objects as <a href="http://xunitpatterns.com/Humble%20Object.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Humble Objects</a>, because any behavior they do isn't tested. So I prefer
+      to pull the parsing out into the callers.
+      </p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+    response = <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">JSON.parse</span>(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_record = response['items'].find{|v| id == v['id']}
+      video['views'] = youtube_record['statistics']['viewCount'].to_i
+      days_available = Date.today - Date.parse(youtube_record['snippet']['publishedAt'])
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeConnection…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def list_videos ids
+    client = GoogleAuthorizer.new(
+      token_key: 'api-youtube',
+      application_name: 'Gateway Youtube Example',
+      application_version: '0.1'
+      ).api_client
+    youtube = client.discovered_api('youtube', 'v3')
+    request = {
+      api_method: youtube.videos.list,
+      parameters: {
+        id: ids.join(","),
+        part: 'snippet, contentDetails, statistics',
+      }
+    }
+    return <span class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">JSON.parse</span>(client.execute!(request).body)
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeConnectionStub…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def list_videos ids
+    <span class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">JSON.parse</span>(File.read('test/data/youtube-video-list.json'))
+  end
+</pre>
+
+<div class="figure" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<p class="figureImage" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a name="sep-connection.png" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline" id="sep-connection.png"></a><img alt="Figure 2" src="http://martinfowler.com/articles/refactoring-external-service/sep-connection.png" style="background: transparent; border: 0; font-size: 100%; margin: 0; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline"></p>
+
+<p class="figureCaption" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline">Figure 2: 
+        The first major step separates the youtube connection code
+        into a <b style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">connection</b> object.
+      </p>
+</div>
+</div>
+
+<div id="SeparatingTheYoutubeDataStructureIntoAGateway" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<hr class="topSection" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thick; margin: 3em 50% 0px 0px">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 0 0 1em; outline: 0; padding: 0; vertical-align: baseline">Separating the youtube data structure into a Gateway</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Now that I have the basic connection to YouTube separated and
+      stubbable, I can work on the code that delves through the
+      YouTube data structures. The problem here is that a bunch of
+      code needs to know that to get the view count data, you have to
+      look into the "statistics" part of the result, but to get the
+      published date you need to delve into "snippet" section instead.
+      Such delving is common with data from remote sources, it's
+      organized the way that makes sense for them, not for me. This is
+      entirely reasonable behavior, they don't have insights into my
+      needs, I have enough trouble doing that on my own.
+      </p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I find that a good way to think about this is Eric Evans's notion of
+      <a href="http://martinfowler.com/bliki/BoundedContext.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Bounded Context</a>. YouTube organizes its data
+      according to its context, while I want to organize mine
+      according to a different one. Code that combines two bounded
+      contexts gets convoluted because it's mixing two separate
+      vocabularies together. I need to separate them with what Eric
+      calls an <i style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">anti-corruption layer</i>, a clear boundary between them.
+      His illustration of an anti-corruption layer is of the Great
+      Wall of China, and as with any wall like this, we need gateways
+      that allow some things to pass between them. In software terms a
+      gateway allows me to reach through the wall to get the data I
+      need from the YouTube bounded context. But the gateway should be
+      expressed in a way that makes sense within my context rather
+      than theirs.</p>
+
+<div class="figure" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<p class="figureImage" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a name="gateway-sketch.png" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline" id="gateway-sketch.png"></a><img alt="Figure 3" src="http://martinfowler.com/articles/refactoring-external-service/gateway-sketch.png" style="background: transparent; border: 0; font-size: 100%; margin: 0; max-width: none; outline: 0; padding: 0; vertical-align: baseline" width="400"></p>
+</div>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">In this, simple, example, that means a gateway object that
+      can give me the published date and view counts without the
+      client needing to know how that's stored in the YouTube data
+      structure. The gateway object translates from YouTube's context
+      into mine.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I begin by creating a gateway object that I initialize with
+      response I got from the connection.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))</span>
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_record <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">= youtube.record(id)</span>
+      video['views'] = youtube_record['statistics']['viewCount'].to_i
+      days_available = Date.today - Date.parse(youtube_record['snippet']['publishedAt'])
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeGateway…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def initialize responseJson
+    @data = JSON.parse(responseJson)
+  end
+  def record id
+    @data['items'].find{|v| id == v['id']}
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I created the simplest behavior I could at this point, even
+      though I don't intend to use the gateway's record method
+      eventually, indeed unless I stop for a cup of tea I don't think
+      it will last for half-an-hour.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Now I'll move the delving logic for the views from the
+      service into the gateway, creating a separate gateway item class
+      to represent each video record.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_record = youtube.record(id)
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      video['views'] = youtube.item(id)['views']</span>
+      days_available = Date.today - Date.parse(youtube_record['snippet']['publishedAt'])
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeGateway…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def item id
+    {
+      'views' =&gt; record(id)['statistics']['viewCount'].to_i
+    }
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I do the same for the published date</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+<span class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">      youtube_record = youtube.record(id)</span>
+      video['views'] = youtube.item(id)['views']
+      days_available = Date.today - <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">youtube.item(id)['published']</span>
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeGateway…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def item id
+    {
+      'views'     =&gt; record(id)['statistics']['viewCount'].to_i,
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      'published' =&gt; Date.parse(record(id)['snippet']['publishedAt'])</span>
+    }
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Since I'm using the records in the gateway looked up by key,
+      I'd like to reflect that usage better in the internal data
+      structure, which I can do by replacing the list with a hash</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class                                                                  YoutubeGateway…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def initialize responseJson
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    @data = JSON.parse(responseJson)['items']
+      .map{|i| [ i['id'], i ] }
+      .to_h</span>
+  end
+  def item id
+    {
+      'views' =&gt;  <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">@data[id]</span>['statistics']['viewCount'].to_i,
+      'published' =&gt; Date.parse(<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">@data[id]</span>['snippet']['publishedAt'])
+    }
+  end
+<span class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">  def record id
+    @data['items'].find{|v| id == v['id']}
+  end</span>
+
+</pre>
+
+<div class="figure" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<p class="figureImage" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a name="sep-gateway.png" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline" id="sep-gateway.png"></a><img alt="Figure 4" src="http://martinfowler.com/articles/refactoring-external-service/sep-gateway.png" style="background: transparent; border: 0; font-size: 100%; margin: 0; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline"></p>
+
+<p class="figureCaption" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline">Figure 4: 
+        Separating data handling into a <b style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">gateway</b> object
+      </p>
+</div>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">With that done, I've done the key separation that I wanted to
+      do. The YouTube connection object handles the calls to YouTube,
+      returning a data structure that it gives to the YouTube gateway
+      object. The service code is now all about how I want to see the
+      data rather than how it's stored in different services. </p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      video['views'] = youtube.item(id)['views']
+      days_available = Date.today - youtube.item(id)['published']
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list)
+  end
+</pre>
+</div>
+
+<div id="SeparatingTheDomainLogicIntoADomainObject" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<hr class="topSection" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thick; margin: 3em 50% 0px 0px">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 0 0 1em; outline: 0; padding: 0; vertical-align: baseline">Separating the domain logic into a Domain Object</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Although all the interaction of YouTube is now parceled out
+      to separate objects, the video service still mixes its domain
+      logic (how to calculate monthly views) from choreographing the
+      relationship between the data stored locally and the data in the
+      service. If I introduce a domain object for the video, I can
+      separate that out.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">My first step is to simply wrap the hash of video data in an
+      object.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class Video…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def initialize aHash
+    @data = aHash
+  end
+  def [] key
+    @data[key]
+  end
+  def []= key, value
+    @data[key] = value
+  end
+  def to_h
+    @data
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json'))<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">.map{|h| Video.new(h)}</span>
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      video['views'] = youtube.item(id)['views']
+      days_available = Date.today - youtube.item(id)['published']
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">.map{|v| v.to_h}</span>)
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">To move the calculation logic into the new video object, I
+      first need to get it into the right shape for the move - which I
+      can do by parcelling it all into a single method on video service with the video domain
+      object and the YouTube gateway item as arguments. The first step
+      to that is to use <a href="http://refactoring.com/catalog/extractVariable.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Extract Variable</a> on the
+      gateway item.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">youtube_item</span> = youtube.item(id)</span>
+      video['views'] = <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">youtube_item</span>['views']
+      days_available = Date.today - <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">youtube_item</span>['published']
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12      
+    end
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">With that done I can easily extract the calculation logic into its own method.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_item = youtube.item(id)
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      enrich_video video, youtube_item</span>
+    end
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def enrich_video video, youtube_item</span>
+      video['views'] = youtube_item['views']
+      days_available = Date.today - youtube_item['published']
+      video['monthlyViews'] = video['views'] * 365.0 / days_available / 12          
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">And then it's easy to apply <a href="http://refactoring.com/catalog/moveMethod.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Move Method</a>
+       to move it into the video.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+      youtube_item = youtube.item(id)
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">      video.enrich_with_youtube youtube_item</span>
+    end
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class Video…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def enrich_with_youtube youtube_item</span>
+    <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">@data</span>['views'] = youtube_item['views']
+    days_available = Date.today - youtube_item['published']
+    <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">@data</span>['monthlyViews'] = @data['views'] * 365.0 / days_available / 12          
+  end
+
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">With that done, I can remove the updates to video's hash.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class Video…
+</p>
+
+<pre class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">  def []= key, value
+    @data[key] = value
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Now I have proper objects, I can simplify the choreography
+       with ids in the service method. I start by using <a href="http://refactoring.com/catalog/inlineTemp.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Inline Temp</a> on <code style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">youtube_item</code> and then
+       replace the reference to the enumeration index with a method
+       call on the video object.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    ids.each do |id|
+      video = @video_list.find{|v| id == v['youtubeID']}
+<span class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">      youtube_item = youtube.item(id)</span>
+      video.enrich_with_youtube(<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">youtube.item(video.youtube_id))</span>
+    end
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class Video…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def youtube_id</span>
+    @data['youtubeID']
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">That allows me to just use the objects directly for the
+       enumeration.</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| v['youtubeID']}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+<span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">    @video_list.each {|v| v.enrich_with_youtube(youtube.item(v.youtube_id))}</span>
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">And remove the accessor for the hash in the video</p>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class Video…
+</p>
+
+<pre class="deleted" style="background: transparent; border: 0; color: #ef5ba1; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; text-decoration: line-through; vertical-align: baseline">  def [] key
+    @data[key]
+  end
+</pre>
+
+<p class="code-label" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService…
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| <span class="highlight" style="background: transparent; border: 0; color: #ef5ba1; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">v.youtube_id</span>}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    @video_list.each {|v| v.enrich_with_youtube(youtube.item(v.youtube_id))}
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I could replace the video object's internal hash with
+       fields, but I don't think it's worth it as it's primarily
+       loaded with a hash and its final output is a jsonified hash.
+       An <a href="http://martinfowler.com/bliki/EmbeddedDocument.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Embedded Document</a> is a perfectly
+       reasonable form of domain object.</p>
+</div>
+
+<div id="musings" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<hr class="topSection" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thick; margin: 3em 50% 0px 0px">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 0 0 1em; outline: 0; padding: 0; vertical-align: baseline">Musings on the final objects</h2>
+
+<div class="figure" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<p class="figureImage" style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><a name="separated-dependencies.png" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline" id="separated-dependencies.png"></a><img alt="Figure 5" src="http://martinfowler.com/articles/refactoring-external-service/separated-dependencies.png" style="background: transparent; border: 0; font-size: 100%; margin: 0; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline"></p>
+
+<p class="figureCaption" style="background: transparent; border: 0; font-size: 90%; font-style: italic; margin: 1em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline">Figure 5: The objects created
+       through this refactoring and their dependencies</p>
+</div>
+
+<p class="code-label" style="background: transparent; border: 0; color: #1a73ba; font-size: 90%; font-style: italic; margin: 1em 0 0; outline: 0; padding: 0; vertical-align: baseline">class VideoService...
+</p>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">  def video_list
+    @video_list = JSON.parse(File.read('videos.json')).map{|h| Video.new(h)}
+    ids = @video_list.map{|v| v.youtube_id}
+    youtube = YoutubeGateway.new(YoutubeConnection.new.list_videos(ids))
+    @video_list.each {|v| v.enrich_with_youtube(youtube.item(v.youtube_id))}
+    return JSON.dump(@video_list.map{|v| v.to_h})
+  end
+</pre>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><span class="highlight" style="background: transparent; border: 0; color: #1a73ba; font-size: 100%; font-weight: bold; margin: 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeConnection</span>
+  def list_videos ids
+    client = GoogleAuthorizer.new(
+      token_key: 'api-youtube',
+      application_name: 'Gateway Youtube Example',
+      application_version: '0.1'
+      ).api_client
+    youtube = client.discovered_api('youtube', 'v3')
+    request = {
+      api_method: youtube.videos.list,
+      parameters: {
+        id: ids.join(","),
+        part: 'snippet, contentDetails, statistics',
+      }
+    }
+    return client.execute!(request).body
+  end
+end
+</pre>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><span class="highlight" style="background: transparent; border: 0; color: #1a73ba; font-size: 100%; font-weight: bold; margin: 0; outline: 0; padding: 0; vertical-align: baseline">class YoutubeGateway</span>
+  def initialize responseJson
+    @data = JSON.parse(responseJson)['items']
+      .map{|i| [ i['id'], i ] }
+      .to_h
+  end
+  def item id
+    {
+      'views' =&gt;  @data[id]['statistics']['viewCount'].to_i,
+      'published' =&gt; Date.parse(@data[id]['snippet']['publishedAt'])
+    }
+  end
+end
+</pre>
+
+<pre style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 90%; margin: 0; outline: 0; padding: 0; vertical-align: baseline"><span class="highlight" style="background: transparent; border: 0; color: #1a73ba; font-size: 100%; font-weight: bold; margin: 0; outline: 0; padding: 0; vertical-align: baseline">class Video</span>
+  def initialize aHash
+    @data = aHash
+  end
+  def to_h
+    @data
+  end
+  def youtube_id
+    @data['youtubeID']
+  end
+  def enrich_with_youtube youtube_item
+    @data['views'] = youtube_item['views']
+    days_available = Date.today - youtube_item['published']
+    @data['monthlyViews'] = @data['views'] * 365.0 / days_available / 12          
+  end
+end
+</pre>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">So what have I achieved? Refactoring often reduces code
+       size, but in this case it's almost doubled from 26 to 54 lines.
+       All else being equal, less code is better. But here I think the
+       better modularity you get by separating the concerns is usually
+       worth the size increase. This is also where the size of a pedagogical (i.e.
+       toy) example can obscure the point. 26 lines of code isn't much
+       to comprehend, but if we are talking about 2600 lines written
+       in this style, then the modularity becomes well worth any code
+       size increase. And usually any such increase is much smaller
+       when you do this kind of thing with a larger code base since  
+       you uncover more opportunities to reduce code size by
+       eliminating duplication.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">You'll notice I've finished with four kinds of object here:
+       coordinator, domain object, gateway, and connection. This is a
+       common arrangement of responsibilities, although different cases
+       see reasonable variations in how the dependencies are laid out.
+       The best arrangement of responsibilities and dependencies
+       differs due to particular needs. Code that needs to change
+       frequently should be separated from code that changes rarely,
+       or simply changes for different reasons. Code that is widely
+       reused should not depend on code that is used only for a
+       particular case. These drivers differ from circumstance to
+       circumstance, and dicate the dependency patterns.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">One common change is to reverse the dependency between
+       domain object and gateway - turning the gateway into a <a href="http://martinfowler.com/eaaCatalog/mapper.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Mapper</a>.
+       This allows the domain object to be independent of how it's
+       populated, at the cost of the mapper knowing about the domain
+       object and getting some access to its guts. If the domain
+       object is used in many contexts, then this can be a valuable arrangement.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Another change might be to shift the code for calling the
+       connection from the coordinator to the gateway. This simplifies
+       the coordinator but makes the gateway a bit more complex.
+       Whether this is a good idea depends on whether the coordinator
+       is getting too complex, or if many coordinators use the same
+       gateway leading to duplicate code in setting up the connection.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">I also think it's likely I'd move some of the behavior of
+       the connection out to the caller, particularly if the caller is
+       a gateway object. The gateway knows what data it needs, so
+       should supply the list of parts in the parameters of the call.
+       But that's really only an issue once we have other clients
+       calling <code style="background: transparent; border: 0; font-family: Inconsolata, monospace; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">list_videos</code>, so I'd be inclined to wait until that day. </p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">One thing that I feel is important, whatever the details of
+       your case, is to have a consistent naming policy for the roles
+       of the objects involved. I sometimes hear people say that you
+       shouldn't put pattern names into your code, but I don't agree.
+       Often pattern names help to communicate roles different
+       elements play, so it's silly to spurn the opportunity.
+       Certainly within a team your code will show common patterns and
+       the naming should reflect that. I use "gateway" following my
+       coining of the <a href="http://martinfowler.com/eaaCatalog/gateway.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Gateway</a> pattern in P of
+       EAA. I've used "connection" here to show the raw link to an
+       external system, and intend to use that convention in my
+       future writing. This naming convention isn't universal and while my
+       pride would be gratifyingly inflated by you using my naming
+       conventions, the important point isn't which naming convention
+       you should use but that you should pick some convention.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">When I break a method into a group of objects like this,
+       there's a natural question about the consequences for testing.
+       I had a unit test for the original method in the video service,
+       should I now write tests for the three new classes? My
+       inclination is that, providing the existing tests cover the
+       behavior sufficiently, there isn't a need to add any more right
+       away. As we add more behavior, then we should add more
+       tests, and if this behavior is added to the new objects then
+       the new tests will focus on them. In time that may mean that
+       some of tests currently targeting the video service will look
+       out of place and should move. But all of this in the future and
+       should be dealt with in the future.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">A particular concern I'd be watching for in the tests is the
+       use of the stubs I put in over the YouTube connection. It's
+       very easy for stubs like this to get out of hand, then they can
+       actually slow down changes because a simple production code
+       change leads to updating many tests. The essence here is to pay
+       attention to duplication in the test code and address it as
+       seriously as you do with duplication in production code.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Such thinking about organizing test doubles naturally leads
+       into the broader question of assembling service
+       objects. Now that I have split a behavior from a single service
+       object into three service objects and a domain entity (using
+       the <a href="http://martinfowler.com/bliki/EvansClassification.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Evans Classification</a>) there's a natural
+       question about how the service objects should be instantiated,
+       configured, and assembled. Currently the video service
+       does this directly for its dependents, but this can easily get
+       out of hand with larger systems. To handle this complexity it's
+       common to use techniques such as <a href="http://martinfowler.com/articles/injection.html" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Service Locators and
+       Dependency Injection</a>. I'm not going to talk about that
+       right now, but that may be the topic for a follow-on article.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">This example uses objects, in large part because I'm far
+       more familiar with object-oriented style than functional
+       styles. But I would expect the fundamental division of
+       responsibilities to be the same, but with boundaries set by
+       function (or perhaps namespace) rather than classes and
+       methods. Some other details would change, the video object
+       would be a data structure and enriching it would create new
+       data structures rather than modifying in place. Looking at this
+       in a functional style would be an interesting article.</p>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">Finally I want to re-stress an important general point about
+       refactoring. Refactoring isn't a term you should use to any
+       restructuring of a code base. It specifically means the
+       approach that applies a series of very small
+       behavior-preserving changes. We saw a couple of examples here
+       where I deliberately introduced code that I knew I was going to
+       remove shortly afterwards, just so I can take small steps that
+       preserve behavior. This is the essence of refactoring, as I
+       recently tweeted:</p>
+
+<div class="tweet" style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<blockquote class="twitter-tweet" lang="en" style="background: transparent; border-left-style: solid; border-width: 0 0 0 2px; color: #5b2858; font-size: 100%; font-style: italic; margin: 0; outline: 0; padding: 0 0 0 1em; quotes: none; vertical-align: baseline" xml:lang="en">Refactoring is a specific way to
+           change code by a series of tiny behavior-preserving
+       transformations. It is not just moving code around.<a href="https://twitter.com/martinfowler/status/564813269102493696" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">-- Martin Fowler</a>
+</blockquote>
+</div>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">The point here is that by taking small steps, you end up
+       going faster because you don't break anything and thus avoid
+       debugging. Most people find this counter-intuitive, I certainly
+       did when Kent Beck first showed me how he refactored. But I quickly
+       discovered how effective it is.</p>
+</div>
+
+<hr class="bodySep" style="border-style: solid none none; border-top-color: #5b2858; border-top-width: thin; clear: both; margin: 5em 10% 2em">
+
+<div class="end-box" style="background: #fee0c9; border: 0; font-size: 100%; margin: 2em -20% 5em 40%; outline: 0; padding: 10px 20px; vertical-align: baseline">
+<p class="shares" style="background: transparent; border: 0; color: #11aa58; font-size: 100%; margin: 0 0 2em; outline: 0; padding: 0; vertical-align: baseline"><span class="label" style="background: transparent; border: 0; font-size: 100%; margin: 0 15px 0 0; outline: 0; padding: 0; vertical-align: baseline">Share: </span><a href="https://twitter.com/intent/tweet?url=http://martinfowler.com/articles/refactoring-external-service.html&amp;text=Refactoring%20code%20that%20accesses%20external%20services" title="Share on Twitter" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline"><img src="http://martinfowler.com/t_mini-a.png" style="background: transparent; border: 0; font-size: 100%; height: 16px; margin: 0 10px 0 0; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline"></a><a href="https://facebook.com/sharer.php?u=http://martinfowler.com/articles/refactoring-external-service.html" title="Share on Facebook" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline"><img src="http://martinfowler.com/fb-icon-20.png" style="background: transparent; border: 0; font-size: 100%; height: 16px; margin: 0 10px 0 0; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline"></a><a href="https://plus.google.com/share?url=http://martinfowler.com/articles/refactoring-external-service.html" title="Share on Google Plus" style="background: transparent; border: 0; color: #94388e; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline"><img src="http://martinfowler.com/gplus-16.png" style="background: transparent; border: 0; font-size: 100%; height: 16px; margin: 0 10px 0 0; max-width: 100%; outline: 0; padding: 0; vertical-align: baseline"></a></p>
+
+<h2 style="background: transparent; border: 0; color: #11aa58; font-family: OpenSans, sans-serif; font-size: 150%; font-style: italic; font-weight: normal; margin: 0; outline: 0; padding: 0; vertical-align: baseline">For articles on similar topics…</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 0.5em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline">…take a look at the following tags:</p>
+
+<p class="tags" style="background: transparent; border: 0; font-size: 100%; line-height: 3; margin: 0.5em 0 1em 2em; outline: 0; padding: 0; vertical-align: baseline"><a href="http://martinfowler.com/tags/object%20collaboration%20design.html" style="background: #11aa58; border-radius: 5px; border: 0; color: white; font-family: OpenSans, sans-serif; font-size: 14px; font-style: normal; font-weight: bold; margin: 2px; outline: 0; padding: 5px; text-decoration: none; vertical-align: baseline; white-space: nowrap">object collaboration design</a> <a href="http://martinfowler.com/tags/clean%20code.html" style="background: #11aa58; border-radius: 5px; border: 0; color: white; font-family: OpenSans, sans-serif; font-size: 14px; font-style: normal; font-weight: bold; margin: 2px; outline: 0; padding: 5px; text-decoration: none; vertical-align: baseline; white-space: nowrap">clean code</a> <a href="http://martinfowler.com/tags/refactoring.html" style="background: #11aa58; border-radius: 5px; border: 0; color: white; font-family: OpenSans, sans-serif; font-size: 14px; font-style: normal; font-weight: bold; margin: 2px; outline: 0; padding: 5px; text-decoration: none; vertical-align: baseline; white-space: nowrap">refactoring</a> <a href="http://martinfowler.com/tags/application%20architecture.html" style="background: #11aa58; border-radius: 5px; border: 0; color: white; font-family: OpenSans, sans-serif; font-size: 14px; font-style: normal; font-weight: bold; margin: 2px; outline: 0; padding: 5px; text-decoration: none; vertical-align: baseline; white-space: nowrap">application architecture</a></p>
+</div>
+</div>
+
+<div class="appendix" style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 80%; line-height: 1.2; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+<h2 style="background: transparent; border: 0; color: #5b2858; font-family: OpenSans, sans-serif; font-size: 150%; font-weight: bold; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline">
+<a name="SignificantRevisions" style="background: transparent; border: 0; color: #5b2858; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline" id="SignificantRevisions"></a>
+Significant Revisions</h2>
+
+<p style="background: transparent; border: 0; font-size: 100%; margin: 1em 0; outline: 0; padding: 0; vertical-align: baseline"><i style="background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">17 February 2015: </i>First published</p>
+</div>
+</div>
+<div id="footer" style="background: black; border: 0; color: white; font-size: 100%; margin: 15px 0 0 30px; outline: 0; padding: 0; vertical-align: baseline">
+  <div class="col1" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 5px 10px; outline: 0; padding: 0; vertical-align: baseline; width: 60px">
+    <h1 style="background: transparent; border: 0; color: #BC85CC; font-family: OpenSans, sans-serif; font-size: 12px; font-weight: bold; margin: 1em 0; outline: 0; padding: 0 0 5px; text-align: left; vertical-align: baseline" align="left">Guides</h1>
+    
+    <ul style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; list-style: square; margin: 0 0 0 15px; outline: 0; padding: 0; text-align: left; vertical-align: baseline">
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/intro.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Intro</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/videos.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Videos</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/design.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Design</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/agile.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Agile</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/nosql.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">NoSQL</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/dsl.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">DSL</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/delivery.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Delivery</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/aboutMe.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">About Me</a></li>
+    </ul>
+  </div>
+  <div class="col2" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 5px 10px; outline: 0; padding: 0; vertical-align: baseline; width: 140px">
+    <h1 style="background: transparent; border: 0; color: #BC85CC; font-family: OpenSans, sans-serif; font-size: 12px; font-weight: bold; margin: 1em 0; outline: 0; padding: 0 0 5px; text-align: left; vertical-align: baseline" align="left">Popular Articles</h1>
+    
+    <ul style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; list-style: square; margin: 0 0 0 15px; outline: 0; padding: 0; text-align: left; vertical-align: baseline">
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/articles/newMethodology.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">New Methodology</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/articles/injection.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Dependency Injection</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/articles/mocksArentStubs.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Mocks aren't Stubs</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/articles/designDead.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Is Design Dead?</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/articles/continuousIntegration.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Continuous Integration</a></li>
+    </ul>
+  </div>
+  <div class="col4" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 5px 10px; outline: 0; padding: 0; vertical-align: baseline; width: 300px">
+    <h1 style="background: transparent; border: 0; color: #BC85CC; font-family: OpenSans, sans-serif; font-size: 12px; font-weight: bold; margin: 1em 0; outline: 0; padding: 0 0 5px; text-align: left; vertical-align: baseline" align="left">Books</h1>
+    
+    <ul style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; list-style: square; margin: 0 0 0 15px; outline: 0; padding: 0; text-align: left; vertical-align: baseline">
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/nosql.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">NoSQL Distilled</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/dsl.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Domain-Specific Languages</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/refactoring.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Refactoring</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/eaa.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Patterns of Enterprise Application Architecture</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/uml.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">UML Distilled</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/ap.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Analysis Patterns</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books/pxp.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Planning Extreme Programming</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Signature Series</a></li>
+    </ul>
+  </div>
+  <div class="col2" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 5px 10px; outline: 0; padding: 0; vertical-align: baseline; width: 140px">
+    <h1 style="background: transparent; border: 0; color: #BC85CC; font-family: OpenSans, sans-serif; font-size: 12px; font-weight: bold; margin: 1em 0; outline: 0; padding: 0 0 5px; text-align: left; vertical-align: baseline" align="left">Site Sections</h1>
+    
+    <ul style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; list-style: square; margin: 0 0 0 15px; outline: 0; padding: 0; text-align: left; vertical-align: baseline">
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/faq.html" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">FAQ</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/tags" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Content Index</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/bliki" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Bliki</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/books" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Books</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/dslCatalog" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">DSL Catalog</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/eaaCatalog" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">EAA Catalog</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/eaaDev" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">EAA Dev</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://martinfowler.com/photos" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Photos</a></li>
+    </ul>
+  </div>
+  <div class="col2" style="background: transparent; border: 0; float: left; font-size: 100%; margin: 5px 10px; outline: 0; padding: 0; vertical-align: baseline; width: 140px">
+    <h1 style="background: transparent; border: 0; color: #BC85CC; font-family: OpenSans, sans-serif; font-size: 12px; font-weight: bold; margin: 1em 0; outline: 0; padding: 0 0 5px; text-align: left; vertical-align: baseline" align="left">ThoughtWorks</h1>
+    
+    <ul style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; list-style: square; margin: 0 0 0 15px; outline: 0; padding: 0; text-align: left; vertical-align: baseline">
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://thoughtworks.com/blogs" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Blogs</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://thoughtworks.com/careers" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Careers</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://www.thoughtworks-studios.com/mingle-agile-project-management" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Mingle</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://www.thoughtworks-studios.com/agile-test-automation" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Twist</a></li>
+    <li style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline"><a href="http://www.thoughtworks-studios.com/go-agile-release-management" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Go</a></li>
+    </ul>
+  </div>
+  <div class="copyright" style="background: transparent; border: 0; clear: both; font-size: 100%; margin: 0; outline: 0; padding: 5px 10px; vertical-align: baseline">
+    <div class="badges" style="background: transparent; border: 0; float: right; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline">
+          <a href="http://martinfowler.com/feed.atom" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+          <img alt="feed" src="http://martinfowler.com/feed-icon-14x14.png" title="News feed" style="background: transparent; border: 0; font-size: 100%; height: 14px; margin: 0; max-width: 100%; outline: 0; padding: 0 1px; vertical-align: baseline; width: 14px">
+        </a>
+        <a href="http://www.twitter.com/martinfowler" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+           <img src="http://martinfowler.com/t_mini-a.png" alt="Twitter" title="Twitter stream" style="background: transparent; border: 0; font-size: 100%; height: 14px; margin: 0; max-width: 100%; outline: 0; padding: 0 1px; vertical-align: baseline; width: 14px">
+        </a>
+          <a href="https://www.facebook.com/martinFowlerThoughtWorks" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+           <img src="http://martinfowler.com/fb-icon-20.png" alt="Twitter" title="Facebook" style="background: transparent; border: 0; font-size: 100%; height: 14px; margin: 0; max-width: 100%; outline: 0; padding: 0 1px; vertical-align: baseline; width: 14px">
+        </a>
+        
+        <a href="http://plus.google.com/107610341080687821846" rel="publisher" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">
+        <img src="http://martinfowler.com/gplus-16.png" alt="Google+" title="Google+" style="background: transparent; border: 0; font-size: 100%; height: 14px; margin: 0; max-width: 100%; outline: 0; padding: 0 1px; vertical-align: baseline; width: 14px"></a>
+    </div>
+    <p style="background: transparent; border: 0; font-family: OpenSans, sans-serif; font-size: 12px; margin: 1em 0; outline: 0; padding: 0; text-align: left; vertical-align: baseline" align="left">© Martin Fowler | <a href="http://www.thoughtworks.com/privacy-policy" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Privacy Policy</a> | <a href="http://martinfowler.com/aboutMe.html#disclosures" style="background: transparent; border: 0; color: white; font-size: 100%; margin: 0; outline: 0; padding: 0; text-decoration: none; vertical-align: baseline">Disclosures</a></p>
+  </div>
+  
+</div>
+</body>

@@ -1,10 +1,10 @@
 require 'nokogiri'
 
-f = File.open("output3.html")
+f = File.open("output4.html")
 @doc = Nokogiri::HTML(f)
 f.close
 
-File.open("extract3.html", "w") do |fout|
+File.open("extract4.html", "w") do |fout|
  fout.puts @doc.xpath("//body")
 end
 
