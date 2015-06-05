@@ -1,6 +1,4 @@
-
-
-
+<html><body>
 
 body {
 margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;
@@ -123,13 +121,13 @@ background: #89b77f;
 color: #b5b935;
 }
 
-<div>
-  <img>
+<div id="banner">
+  <img class="photo">
    <a href="http://martinfowler.com">
-      <img>
+      <img class="name-logo">
   
     </a>
-    <div>
+    <div class="search">
       
       
         
@@ -141,7 +139,7 @@ color: #b5b935;
         
       
     </div>
-  <div>
+  <div class="main-navigation">
     <ul>
       <li><a href="http://martinfowler.com/intro.html">Intro</a></li>
       <li><a href="http://martinfowler.com/videos.html">Videos</a></li>
@@ -156,16 +154,16 @@ color: #b5b935;
     
         </li>
 <li><p>
-          <a href="http://www.thoughtworks.com">ThoughtWorks</a>
+          <a href="http://www.thoughtworks.com" class="tw">ThoughtWorks</a>
     </p></li>
     
         <li><p>
-      <a href="http://martinfowler.com/feed.atom" title="feed">
+      <a href="http://martinfowler.com/feed.atom" title="feed" class="icon-rss">
       </a>
      </p></li>
     
         <li><p>
-      <a href="http://www.twitter.com/martinfowler" title="Twitter stream">
+      <a href="http://www.twitter.com/martinfowler" title="Twitter stream" class="icon-twitter">
       </a>
      </p></li>
       
@@ -173,33 +171,33 @@ color: #b5b935;
   </div>
 </div>
 
-<div>
+<div id="content">
 <h1>Refactoring code that accesses external services</h1>
 
-<p><i>
+<p class="abstract"><i>
     When I write code that deals with external services, I find it
     valuable to separate that access code into separate objects. Here
     I show how I would refactor some congealed code into a common
     pattern of this separation.
   </i></p>
 
-<div>
-<div>
-<p>17 February 2015</p>
+<div class="frontMatter">
+<div class="frontLeft">
+<p class="date">17 February 2015</p>
 
-<div>
+<div class="author">
 <img>
-<p><a href="http://martinfowler.com/">Martin Fowler</a></p>
+<p class="name"><a href="http://martinfowler.com/">Martin Fowler</a></p>
 </div>
 
-<div></div>
+<div class="clear"></div>
 
-<div>Find <b>similar articles</b> to this by looking at these tags: <a href="http://martinfowler.com/tags/object%20collaboration%20design.html">object collaboration design</a>Â Â· <a href="http://martinfowler.com/tags/clean%20code.html">clean code</a>Â Â· <a href="http://martinfowler.com/tags/refactoring.html">refactoring</a>Â Â· <a href="http://martinfowler.com/tags/application%20architecture.html">application architecture</a>
+<div class="tags">Find <b>similar articles</b> to this by looking at these tags: <a href="http://martinfowler.com/tags/object%20collaboration%20design.html">object collaboration design</a>Â Â· <a href="http://martinfowler.com/tags/clean%20code.html">clean code</a>Â Â· <a href="http://martinfowler.com/tags/refactoring.html">refactoring</a>Â Â· <a href="http://martinfowler.com/tags/application%20architecture.html">application architecture</a>
 </div>
 </div>
 
-<div>
-<div>
+<div class="frontRight">
+<div class="contents">
 <h2>Contents</h2>
 
 <ul>
@@ -219,7 +217,7 @@ color: #b5b935;
 </div>
 </div>
 
-<div>
+<div class="paperBody">
 <p>One of the characteristics of software systems is that they
     don't live on their own. In order to do something useful, they
     usually need to talk to other bits of software, written by
@@ -235,8 +233,8 @@ color: #b5b935;
     the refactorings that introduce the kind of modularity I'm looking
     for.</p>
 
-<div>
-<hr>
+<div id="TheStartingCode">
+<hr class="topSection">
 <h2>The starting code</h2>
 
 <p>The example code's job is to read some data about videos from
@@ -245,7 +243,7 @@ color: #b5b935;
 
 <p>Here is the starting code.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -276,7 +274,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>The language for this example is Ruby</p>
+<p class="code-remark">The language for this example is Ruby</p>
 
 <p>The first thing for me to say here is that there isn't much
       code in this example. If the entire codebase is just this
@@ -286,7 +284,7 @@ color: #b5b935;
       you to imagine this code as typical code in a system of tens of
       thousands of lines.</p>
 
-<p>The access to the YouTube API is mediated through a
+<p class="skippable">The access to the YouTube API is mediated through a
       GoogleAuthorizer object which, for this article's purposes, I'm
       going to treat as an external API. It handles the messy
       details of connecting to a Google service (such as YouTube) and
@@ -309,7 +307,7 @@ color: #b5b935;
 <span class="frag-domain"> some domain logic.</span>
 </p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -359,8 +357,8 @@ color: #b5b935;
       these other responsibilities.</p>
 </div>
 
-<div>
-<hr>
+<div id="PuttingTheCodeUnderTest">
+<hr class="topSection">
 <h2>Putting the code under test</h2>
 
 <p>The first step in refactoring is always the same. You need to
@@ -390,7 +388,7 @@ color: #b5b935;
         have tests in place. To put tests in place, we often have to
         change code.</p>
 
-<p><a href="http://www.amazon.com/gp/product/0131177052?ie=UTF8&amp;tag=martinfowlerc-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131177052">-- Michael Feathers</a><img></p>
+<p class="quote-attribution"><a href="http://www.amazon.com/gp/product/0131177052?ie=UTF8&amp;tag=martinfowlerc-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131177052">-- Michael Feathers</a><img></p>
 </blockquote>
 
 <p>Given that I have to make this change without tests, I need
@@ -400,7 +398,7 @@ color: #b5b935;
       interaction with YouTube separated from the rest of the routine
       by into its own method.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -466,7 +464,7 @@ color: #b5b935;
       today, for it to work tomorrow I need to do the same thing with
       the call to <code>Date.today</code>. </p>
 
-<p>class VideoServiceTesterâ€¦
+<p class="code-label">class VideoServiceTesterâ€¦
 </p>
 
 <pre>  def setup
@@ -482,8 +480,8 @@ color: #b5b935;
 </pre>
 </div>
 
-<div>
-<hr>
+<div id="SeparatingTheRemoteCallIntoAConnectionObject">
+<hr class="topSection">
 <h2>Separating the remote call into a connection object</h2>
 
 <p>Separating concerns by putting code into different functions
@@ -492,10 +490,10 @@ color: #b5b935;
       provider, I prefer to increase the level of separation into
       different classes. </p>
 
-<div>
-<p><a></a><img></p>
+<div class="figure">
+<p class="figureImage"><a id="no-sep.png"></a><img></p>
 
-<p>Figure 1: 
+<p class="figureCaption">Figure 1: 
         At the beginning, the video service class contains four responsibilities
       </p>
 </div>
@@ -503,7 +501,7 @@ color: #b5b935;
 <p>My first step is therefore to create a new
       class and use <a href="http://refactoring.com/catalog/moveMethod.html">Move Method</a>.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def call_youtube ids
@@ -511,7 +509,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeConnectionâ€¦
+<p class="code-label">class YoutubeConnectionâ€¦
 </p>
 
 <pre>  def list_videos ids
@@ -535,7 +533,7 @@ color: #b5b935;
 <p>With that I can also change the stub so it returns a test
       double rather than simply stubbing the method.</p>
 
-<p>class VideoServiceTesterâ€¦
+<p class="code-label">class VideoServiceTesterâ€¦
 </p>
 
 <pre>  def setup
@@ -549,7 +547,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeConnectionStubâ€¦
+<p class="code-label">class YoutubeConnectionStubâ€¦
 </p>
 
 <pre>  def list_videos ids
@@ -576,7 +574,7 @@ color: #b5b935;
       subject it to
       <a href="http://refactoring.com/catalog/inlineMethod.html">Inline Method</a>.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -603,7 +601,7 @@ color: #b5b935;
       to pull the parsing out into the callers.
       </p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -621,7 +619,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeConnectionâ€¦
+<p class="code-label">class YoutubeConnectionâ€¦
 </p>
 
 <pre>  def list_videos ids
@@ -642,7 +640,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeConnectionStubâ€¦
+<p class="code-label">class YoutubeConnectionStubâ€¦
 </p>
 
 <pre>  def list_videos ids
@@ -650,18 +648,18 @@ color: #b5b935;
   end
 </pre>
 
-<div>
-<p><a></a><img></p>
+<div class="figure">
+<p class="figureImage"><a id="sep-connection.png"></a><img></p>
 
-<p>Figure 2: 
+<p class="figureCaption">Figure 2: 
         The first major step separates the youtube connection code
         into a <b>connection</b> object.
       </p>
 </div>
 </div>
 
-<div>
-<hr>
+<div id="SeparatingTheYoutubeDataStructureIntoAGateway">
+<hr class="topSection">
 <h2>Separating the youtube data structure into a Gateway</h2>
 
 <p>Now that I have the basic connection to YouTube separated and
@@ -691,8 +689,8 @@ color: #b5b935;
       expressed in a way that makes sense within my context rather
       than theirs.</p>
 
-<div>
-<p><a></a><img></p>
+<div class="figure">
+<p class="figureImage"><a id="gateway-sketch.png"></a><img></p>
 </div>
 
 <p>In this, simple, example, that means a gateway object that
@@ -704,7 +702,7 @@ color: #b5b935;
 <p>I begin by creating a gateway object that I initialize with
       response I got from the connection.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -722,7 +720,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeGatewayâ€¦
+<p class="code-label">class YoutubeGatewayâ€¦
 </p>
 
 <pre>  def initialize responseJson
@@ -742,7 +740,7 @@ color: #b5b935;
       service into the gateway, creating a separate gateway item class
       to represent each video record.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -760,7 +758,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeGatewayâ€¦
+<p class="code-label">class YoutubeGatewayâ€¦
 </p>
 
 <pre>  def item id
@@ -772,7 +770,7 @@ color: #b5b935;
 
 <p>I do the same for the published date</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -790,7 +788,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class YoutubeGatewayâ€¦
+<p class="code-label">class YoutubeGatewayâ€¦
 </p>
 
 <pre>  def item id
@@ -805,7 +803,7 @@ color: #b5b935;
       I'd like to reflect that usage better in the internal data
       structure, which I can do by replacing the list with a hash</p>
 
-<p>class                                                                  YoutubeGatewayâ€¦
+<p class="code-label">class                                                                  YoutubeGatewayâ€¦
 </p>
 
 <pre>  def initialize responseJson
@@ -825,10 +823,10 @@ color: #b5b935;
 
 </pre>
 
-<div>
-<p><a></a><img></p>
+<div class="figure">
+<p class="figureImage"><a id="sep-gateway.png"></a><img></p>
 
-<p>Figure 4: 
+<p class="figureCaption">Figure 4: 
         Separating data handling into a <b>gateway</b> object
       </p>
 </div>
@@ -839,7 +837,7 @@ color: #b5b935;
       object. The service code is now all about how I want to see the
       data rather than how it's stored in different services. </p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -857,8 +855,8 @@ color: #b5b935;
 </pre>
 </div>
 
-<div>
-<hr>
+<div id="SeparatingTheDomainLogicIntoADomainObject">
+<hr class="topSection">
 <h2>Separating the domain logic into a Domain Object</h2>
 
 <p>Although all the interaction of YouTube is now parceled out
@@ -871,7 +869,7 @@ color: #b5b935;
 <p>My first step is to simply wrap the hash of video data in an
       object.</p>
 
-<p>class Videoâ€¦
+<p class="code-label">class Videoâ€¦
 </p>
 
 <pre>  def initialize aHash
@@ -888,7 +886,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -912,7 +910,7 @@ color: #b5b935;
       to that is to use <a href="http://refactoring.com/catalog/extractVariable.html">Extract Variable</a> on the
       gateway item.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -932,7 +930,7 @@ color: #b5b935;
 
 <p>With that done I can easily extract the calculation logic into its own method.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -957,7 +955,7 @@ color: #b5b935;
 <p>And then it's easy to apply <a href="http://refactoring.com/catalog/moveMethod.html">Move Method</a>
        to move it into the video.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -973,7 +971,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class Videoâ€¦
+<p class="code-label">class Videoâ€¦
 </p>
 
 <pre><span class="highlight">  def enrich_with_youtube youtube_item</span>
@@ -986,10 +984,10 @@ color: #b5b935;
 
 <p>With that done, I can remove the updates to video's hash.</p>
 
-<p>class Videoâ€¦
+<p class="code-label">class Videoâ€¦
 </p>
 
-<pre>  def []= key, value
+<pre class="deleted">  def []= key, value
     @data[key] = value
   end
 </pre>
@@ -999,7 +997,7 @@ color: #b5b935;
        replace the reference to the enumeration index with a method
        call on the video object.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -1015,7 +1013,7 @@ color: #b5b935;
   end
 </pre>
 
-<p>class Videoâ€¦
+<p class="code-label">class Videoâ€¦
 </p>
 
 <pre><span class="highlight">  def youtube_id</span>
@@ -1026,7 +1024,7 @@ color: #b5b935;
 <p>That allows me to just use the objects directly for the
        enumeration.</p>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -1040,15 +1038,15 @@ color: #b5b935;
 
 <p>And remove the accessor for the hash in the video</p>
 
-<p>class Videoâ€¦
+<p class="code-label">class Videoâ€¦
 </p>
 
-<pre>  def [] key
+<pre class="deleted">  def [] key
     @data[key]
   end
 </pre>
 
-<p>class VideoServiceâ€¦
+<p class="code-label">class VideoServiceâ€¦
 </p>
 
 <pre>  def video_list
@@ -1067,18 +1065,18 @@ color: #b5b935;
        reasonable form of domain object.</p>
 </div>
 
-<div>
-<hr>
+<div id="musings">
+<hr class="topSection">
 <h2>Musings on the final objects</h2>
 
-<div>
-<p><a></a><img></p>
+<div class="figure">
+<p class="figureImage"><a id="separated-dependencies.png"></a><img></p>
 
-<p>Figure 5: The objects created
+<p class="figureCaption">Figure 5: The objects created
        through this refactoring and their dependencies</p>
 </div>
 
-<p>class VideoService...
+<p class="code-label">class VideoService...
 </p>
 
 <pre>  def video_list
@@ -1259,8 +1257,8 @@ end
        preserve behavior. This is the essence of refactoring, as I
        recently tweeted:</p>
 
-<div>
-<blockquote>Refactoring is a specific way to
+<div class="tweet">
+<blockquote class="twitter-tweet">Refactoring is a specific way to
            change code by a series of tiny behavior-preserving
        transformations. It is not just moving code around.<a href="https://twitter.com/martinfowler/status/564813269102493696">-- Martin Fowler</a>
 </blockquote>
@@ -1273,29 +1271,29 @@ end
        discovered how effective it is.</p>
 </div>
 
-<hr>
+<hr class="bodySep">
 
-<div>
-<p><span class="label">Share: </span><a href="https://twitter.com/intent/tweet?url=http://martinfowler.com/articles/refactoring-external-service.html&amp;text=Refactoring%20code%20that%20accesses%20external%20services" title="Share on Twitter"><img></a><a href="https://facebook.com/sharer.php?u=http://martinfowler.com/articles/refactoring-external-service.html" title="Share on Facebook"><img></a><a href="https://plus.google.com/share?url=http://martinfowler.com/articles/refactoring-external-service.html" title="Share on Google Plus"><img></a></p>
+<div class="end-box">
+<p class="shares"><span class="label">Share: </span><a href="https://twitter.com/intent/tweet?url=http://martinfowler.com/articles/refactoring-external-service.html&amp;text=Refactoring%20code%20that%20accesses%20external%20services" title="Share on Twitter"><img></a><a href="https://facebook.com/sharer.php?u=http://martinfowler.com/articles/refactoring-external-service.html" title="Share on Facebook"><img></a><a href="https://plus.google.com/share?url=http://martinfowler.com/articles/refactoring-external-service.html" title="Share on Google Plus"><img></a></p>
 
 <h2>For articles on similar topicsâ€¦</h2>
 
 <p>â€¦take a look at the following tags:</p>
 
-<p><a href="http://martinfowler.com/tags/object%20collaboration%20design.html">object collaboration design</a> <a href="http://martinfowler.com/tags/clean%20code.html">clean code</a> <a href="http://martinfowler.com/tags/refactoring.html">refactoring</a> <a href="http://martinfowler.com/tags/application%20architecture.html">application architecture</a></p>
+<p class="tags"><a href="http://martinfowler.com/tags/object%20collaboration%20design.html">object collaboration design</a> <a href="http://martinfowler.com/tags/clean%20code.html">clean code</a> <a href="http://martinfowler.com/tags/refactoring.html">refactoring</a> <a href="http://martinfowler.com/tags/application%20architecture.html">application architecture</a></p>
 </div>
 </div>
 
-<div>
+<div class="appendix">
 <h2>
-<a></a>
+<a id="SignificantRevisions"></a>
 Significant Revisions</h2>
 
 <p><i>17 February 2015: </i>First published</p>
 </div>
 </div>
-<div>
-  <div>
+<div id="footer">
+  <div class="col1">
     <h1>Guides</h1>
     
     <ul>
@@ -1309,7 +1307,7 @@ Significant Revisions</h2>
     <li><a href="http://martinfowler.com/aboutMe.html">About Me</a></li>
     </ul>
   </div>
-  <div>
+  <div class="col2">
     <h1>Popular Articles</h1>
     
     <ul>
@@ -1320,7 +1318,7 @@ Significant Revisions</h2>
     <li><a href="http://martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a></li>
     </ul>
   </div>
-  <div>
+  <div class="col4">
     <h1>Books</h1>
     
     <ul>
@@ -1334,7 +1332,7 @@ Significant Revisions</h2>
     <li><a href="http://martinfowler.com/books">Signature Series</a></li>
     </ul>
   </div>
-  <div>
+  <div class="col2">
     <h1>Site Sections</h1>
     
     <ul>
@@ -1348,7 +1346,7 @@ Significant Revisions</h2>
     <li><a href="http://martinfowler.com/photos">Photos</a></li>
     </ul>
   </div>
-  <div>
+  <div class="col2">
     <h1>ThoughtWorks</h1>
     
     <ul>
@@ -1359,20 +1357,20 @@ Significant Revisions</h2>
     <li><a href="http://www.thoughtworks-studios.com/go-agile-release-management">Go</a></li>
     </ul>
   </div>
-  <div>
-    <div>
+  <div class="copyright">
+    <div class="badges">
           <a href="http://martinfowler.com/feed.atom">
-          <img>
+          <img title="News feed">
         </a>
         <a href="http://www.twitter.com/martinfowler">
-           <img>
+           <img title="Twitter stream">
         </a>
           <a href="https://www.facebook.com/martinFowlerThoughtWorks">
-           <img>
+           <img title="Facebook">
         </a>
         
         <a href="http://plus.google.com/107610341080687821846">
-        <img></a>
+        <img title="Google+"></a>
     </div>
     <p>Â© Martin Fowler | <a href="http://www.thoughtworks.com/privacy-policy">Privacy Policy</a> | <a href="http://martinfowler.com/aboutMe.html#disclosures">Disclosures</a></p>
   </div>
@@ -1380,3 +1378,4 @@ Significant Revisions</h2>
 </div>
 
 
+</body></html>
